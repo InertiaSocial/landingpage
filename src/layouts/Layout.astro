@@ -1,0 +1,44 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Cursor from "../components/Cursor.astro";
+import "@fontsource/atkinson-hyperlegible";
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+    <meta
+      name="description"
+      content="Bet on news, culture, and more — coming soon."
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#538D5B" />
+    <title>{Astro.props.title}</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <Cursor />
+    <slot />
+    <style lang="scss">
+      html {
+        font-size: 16px;
+        line-height: 1.5;
+        overflow: hidden;
+      }
+      body,
+      main {
+        font-family: "Atkinson Hyperlegible", serif !important;
+      }
+    </style>
+  </body>
+</html>

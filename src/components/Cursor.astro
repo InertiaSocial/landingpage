@@ -1,0 +1,108 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div id="invertedcursor" transition:persist>
+  <Icon name="ph:hand-pointing-bold" id="cursoricon" />
+</div>
+
+<script>
+  let scale = 1;
+
+  const animateCursor = (e: MouseEvent, scale: number) => {
+    const x =
+      e.clientX - document.getElementById("invertedcursor")!.offsetWidth / 2;
+    const y =
+      e.clientY - document.getElementById("invertedcursor")!.offsetHeight / 2;
+
+    update(x, y, scale);
+  };
+
+  const update = (x: number, y: number, scale: number) => {
+    if (scale === 1) {
+      document.getElementById("cursoricon")!.style.opacity = "0";
+    } else {
+      document.getElementById("cursoricon")!.style.opacity = "1";
+    }
+    const keyframes = {
+      transform: `translate(${x}px, ${y}px) scale(${scale})`,
+    };
+
+    document.getElementById("invertedcursor")!.animate(keyframes, {
+      duration: 1200,
+      fill: "forwards",
+    });
+  };
+
+  const loadCursor = () => {
+    function is_touch_enabled() {
+      return (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      );
+    }
+    if (is_touch_enabled()) {
+      document.getElementById("invertedcursor")!.style.display = "none";
+    }
+    window.onmousemove = (e) => {
+      animateCursor(e, scale);
+
+      [
+        "a[href]",
+        ".hoverable",
+        "button",
+        "input",
+        "select",
+        "label",
+        "summary",
+      ].forEach((element) => {
+        document.querySelectorAll(element).forEach((h) => {
+          h.addEventListener("mouseenter", () => (scale = 1.2));
+          h.addEventListener("mouseleave", () => (scale = 1));
+          document.addEventListener("astro:after-swap", () => (scale = 1));
+        });
+      });
+    };
+  };
+  document.addEventListener("astro:page-load", loadCursor);
+</script>
+
+<style lang="stylus">
+    body
+        height 100%
+        min-height 100%
+        &:hover
+            #invertedcursor
+                opacity 1
+                transition all 0.5s ease
+            #cursoricon
+                opacity 1
+                transition all 0.5s ease
+
+    #invertedcursor
+        height 7rem
+        width 7rem
+        opacity 0.8
+        border-radius 50%
+        mix-blend-mode invert
+        backdrop-filter invert() blur(1px)
+        background-image url('/images/nnnoise.svg')
+        position fixed
+        left 0px
+        top 0px
+        z-index 99
+        pointer-events none
+        // mask radial-gradient(circle closest-side, transparent 90%, #000 90%)
+        transition all 0.5s ease
+
+    #cursoricon
+        position fixed
+        left 50%
+        top 50%
+        transform translate(-50%, -50%) scale(2)
+        color white
+        opacity 0
+        transition all 0.5s ease
+
+</style>

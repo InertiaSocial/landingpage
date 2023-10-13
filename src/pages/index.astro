@@ -1,0 +1,146 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/Logo.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import img from "../images/274.jpg";
+---
+
+<Layout title="belief">
+  <head>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+  </head>
+  <main>
+    <div class="cover">
+      <Image alt="" src={img} quality="high"/>
+    </div>
+    <div class="logo" transition:name="logo" transition:animate="initial">
+      <Logo />
+    </div>
+    <div class="text-block">
+      <p>Bet on <span class="text-gradient">news, culture, and more</span> — coming soon.</p>
+    </div>
+    <div class="button-holder">
+      <button
+      class="button"
+      data-tally-width="500"
+      data-tally-open="3qGKx2"
+      data-tally-layout="modal"
+      data-tally-auto-close="5000"
+      data-tally-emoji-text="👋"
+      data-tally-emoji-animation="tada"><span><Icon name="ph:envelope-open-bold" style="transform: translateY(1px);"></Icon> Join our waitlist</span></button
+      >
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  body {
+    background-color: #0d0c07;
+    transition: all 0.2s ease-in-out;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover {
+    position: absolute;
+    height: 100%;
+    transform: translateY(-500px);
+    filter: blur(10px);
+    position: center;
+    size: cover;
+    animation: scroll 60s infinite ease-in-out alternate;
+    z-index: -10;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translate(0px, 0px);
+    }
+    100% {
+      transform: translate(-1500px, -1500px);
+    }
+  }
+
+  .logo {
+    transform: scale(2);
+    margin-top: 10rem;
+    z-index: 2;
+    transition: all 0.2s ease-in-out;
+
+    @media (max-width: 768px) {
+      transform: scale(1);
+    }
+
+
+  }
+  .text-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #F8F6F2;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    text-align: center;
+    line-height: 1.5;
+    text-wrap: wrap;
+    width: 50%;
+
+    .text-gradient {
+      background: linear-gradient(90deg, #50808E 0%, #A3C9A8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .button-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    transform: scale(1.6);
+
+    .button {
+      width: 200px;
+      padding: 0;
+      border: none;
+      transform: rotate(5deg);
+      transform-origin: center;
+      text-decoration: none;
+      font-size: 15px;
+      padding-bottom: 3px;
+      border-radius: 5px;
+      box-shadow: 0 2px 0 #494a4b;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background-color: #3D6654;
+    }
+
+    .button span {
+      background: #131910;
+      color: #F8F6F2;
+      font-family: "Atkinson Hyperlegible", sans-serif;
+      font-weight: 700;
+      display: block;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: 2px solid #DDD8C4;
+    }
+
+    .button:active {
+      transform: translateY(5px);
+      padding-bottom: 0px;
+      outline: 0;
+    }
+  }
+</style>
