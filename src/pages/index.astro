@@ -7,9 +7,6 @@ import img from "../images/274.jpg";
 ---
 
 <Layout title="belief">
-  <head>
-    <script async src="https://tally.so/widgets/embed.js"></script>
-  </head>
   <main>
     <div class="cover">
       <Image draggable="false" alt="" src={img} quality="high"/>
@@ -18,21 +15,32 @@ import img from "../images/274.jpg";
       <Logo />
     </div>
     <div class="text-block">
-      <p>Bet on <span class="text-gradient">news, culture, and more</span> — coming soon.</p>
+      <p>
+        Bet on <span class="text-gradient">news, culture, and more</span> —
+        coming soon.
+      </p>
     </div>
     <div class="button-holder">
       <button
-      class="button"
-      data-tally-width="500"
-      data-tally-open="3qGKx2"
-      data-tally-layout="modal"
-      data-tally-auto-close="5000"
-      data-tally-emoji-text="👋"
-      data-tally-emoji-animation="tada"><span><Icon name="ph:envelope-open-bold" style="transform: translateY(1px);"></Icon> Join our waitlist</span></button
+        class="button"
+        data-tally-width="500"
+        data-tally-open="3qGKx2"
+        data-tally-layout="modal"
+        data-tally-auto-close="5000"
+        data-tally-emoji-text="👋"
+        data-tally-emoji-animation="tada"
+        ><span
+          ><Icon
+            name="ph:envelope-open-bold"
+            style="transform: translateY(1px);"
+          /> Join our waitlist</span
+        ></button
       >
     </div>
   </main>
 </Layout>
+
+<script async src="https://tally.so/widgets/embed.js"></script>
 
 <style lang="scss">
   body {
@@ -84,8 +92,6 @@ import img from "../images/274.jpg";
     @media (max-width: 768px) {
       transform: scale(1);
     }
-
-
   }
   .text-block {
     display: flex;
@@ -94,7 +100,7 @@ import img from "../images/274.jpg";
     margin-top: 4rem;
     font-size: 1.5rem;
     font-weight: 400;
-    color: #F8F6F2;
+    color: #f8f6f2;
     font-family: "Atkinson Hyperlegible", sans-serif;
     text-align: center;
     line-height: 1.5;
@@ -102,7 +108,7 @@ import img from "../images/274.jpg";
     width: 50%;
 
     .text-gradient {
-      background: linear-gradient(90deg, #50808E 0%, #A3C9A8 100%);
+      background: linear-gradient(90deg, #50808e 0%, #a3c9a8 100%);
       font-weight: 700;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -128,18 +134,18 @@ import img from "../images/274.jpg";
       border-radius: 5px;
       box-shadow: 0 2px 0 #494a4b;
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      background-color: #3D6654;
+      background-color: #3d6654;
     }
 
     .button span {
       background: #131910;
-      color: #F8F6F2;
+      color: #f8f6f2;
       font-family: "Atkinson Hyperlegible", sans-serif;
       font-weight: 700;
       display: block;
       padding: 0.5rem 1rem;
       border-radius: 5px;
-      border: 2px solid #DDD8C4;
+      border: 2px solid #ddd8c4;
     }
 
     .button:active {
