@@ -12,7 +12,7 @@ import img from "../images/274.jpg";
   </head>
   <main>
     <div class="cover">
-      <Image alt="" src={img} quality="high"/>
+      <Image draggable="false" alt="" src={img} quality="high"/>
     </div>
     <div class="logo" transition:name="logo" transition:animate="initial">
       <Logo />
@@ -56,6 +56,10 @@ import img from "../images/274.jpg";
     size: cover;
     animation: scroll 60s infinite ease-in-out alternate;
     z-index: -10;
+    > img {
+      user-select: none;
+      -webkit-user-select: none;
+    }
 
     @media (max-width: 768px) {
       display: none;
