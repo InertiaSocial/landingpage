@@ -87,6 +87,12 @@ import { Icon } from "astro-icon/components";
       hoverCursor(1, true);
       animateCursor(e, hoverScale);
     });
+    document.addEventListener("mouseout", () => {
+      invertedCursor.style.opacity = "0";
+    });
+    document.addEventListener("mouseover", () => {
+      invertedCursor.style.opacity = "1";
+    });
   };
   document.addEventListener("astro:page-load", loadCursor);
 </script>
