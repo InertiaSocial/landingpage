@@ -8,6 +8,10 @@ import { Icon } from "astro-icon/components";
 </div>
 
 <script>
+  const invertedCursor = document.getElementById("invertedCursor")!;
+  const cursor = document.getElementById("cursor")!;
+  const point = document.getElementById("point")!;
+
   let hoverScale = 1;
   let lastX = 0;
   let lastY = 0;
@@ -15,9 +19,9 @@ import { Icon } from "astro-icon/components";
 
   const animateCursor = (e: MouseEvent, hoverScale: number) => {
     const x =
-      e.clientX - document.getElementById("invertedCursor")!.offsetWidth / 2;
+      e.clientX - invertedCursor.offsetWidth / 2;
     const y =
-      e.clientY - document.getElementById("invertedCursor")!.offsetHeight / 2;
+      e.clientY - invertedCursor.offsetHeight / 2;
 
     const currentTime = Date.now();
     const timeDelta = currentTime - lastTime;
@@ -35,9 +39,9 @@ import { Icon } from "astro-icon/components";
   };
 
   const update = (x: number, y: number, scaleX: number, scaleY: number) => {
-    let transform = `translate(${x}px, ${y}px) scale(${scaleX}, ${scaleY})`;
+    const transform = `translate(${x}px, ${y}px) scale(${scaleX}, ${scaleY})`;
 
-    document.getElementById("invertedCursor")!.animate(
+    invertedCursor.animate(
       { transform },
       {
         duration: 1200,
@@ -46,25 +50,16 @@ import { Icon } from "astro-icon/components";
     );
   };
 
-  const hoverCursor = (hS: number, fist?: boolean) => {
-    const cursorIcon = fist ? document.getElementById("cursor")! : document.getElementById("point")!;
+  const hoverCursor = (hS: number, c?: boolean) => {
+    const cursorIcon = c ? cursor : point;
     hoverScale = hS;
-    if (hoverScale === 1) {
-      cursorIcon.style.opacity = "0";
-    } else {
-      cursorIcon.style.opacity = "1";
-    }
+    cursorIcon.style.opacity = hoverScale === 1 ? "0" : "1";
   };
 
   const loadCursor = () => {
-    function isTouch() {
-      return (
-        "ontouchstart" in window ||
-        navigator.maxTouchPoints > 0
-      );
-    }
-    if (isTouch()) {
-      document.getElementById("invertedCursor")!.style.display = "none";
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+      invertedCursor.style.display = "none";
+      return;
     }
     window.onmousemove = (e) => {
       animateCursor(e, hoverScale);
