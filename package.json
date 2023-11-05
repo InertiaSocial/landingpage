@@ -11,16 +11,15 @@
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible": "^5.0.15",
-    "@iconify-json/ph": "^1.1.6",
     "@studio-freight/lenis": "^1.0.27",
     "astro": "^3.3.0",
-    "astro-icon": "1.0.0-next.2",
-    "party-js": "^2.2.0",
-    "sharp": "0.32.6",
-    "stylus": "^0.60.0"
+    "party-js": "^2.2.0"
   },
   "devDependencies": {
-    "sass": "^1.66.1"
+    "@iconify-json/ph": "^1.1.6",
+    "astro-icon": "1.0.0-next.2",
+    "sharp": "0.32.6",
+    "stylus": "^0.60.0"
   },
   "trustedDependencies": [
     "sharp"
