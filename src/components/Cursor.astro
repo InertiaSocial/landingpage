@@ -80,6 +80,15 @@ import { Icon } from "astro-icon/components";
         });
       }
     );
+    invertedCursor.animate(
+      {
+        opacity: [0, 1],
+      },
+      {
+        duration: 800,
+        fill: "forwards",
+      }
+    );
     document.querySelectorAll("input").forEach((h) => {
       // @ts-ignore
       h.style.cursor = "none";
@@ -123,9 +132,9 @@ import { Icon } from "astro-icon/components";
 
     #invertedCursor
         display none
+        opacity 0
         height 3rem
         width 3rem
-        opacity 0.8
         border-radius 50%
         mix-blend-mode invert
         backdrop-filter invert() blur(1px)
