@@ -3,16 +3,22 @@ import Layout from "../layouts/Layout.astro";
 import Logo from "../components/Logo.astro";
 import InterestForm from "../components/InterestForm.astro";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import img from "../images/274.jpg";
 ---
 
 <Layout title="Belief">
   <main>
     <Logo />
-    <div class="textBlock">
+    <div id="tagline" class="textBlock">
       <span>
         Bet on <span class="text-gradient">news, culture, and more</span> —
         coming soon.
+      </span>
+    </div>
+    <div class="textBlock hidden" id="thankYou">
+      <span>
+        <b><Icon name="ph:confetti-bold" style="transform: translateY(2px)"/> Thanks for your interest!</b> We'll be in touch soon.
       </span>
     </div>
     <div class="form">

@@ -10,7 +10,7 @@ export default defineConfig({
   integrations: [
     icon({
       include: {
-        ph: ["hand-pointing-bold", "link-bold", "hand-fist-bold", "cursor-text-bold", "arrow-left-bold", "envelope-open-bold"],
+        ph: ["hand-pointing-bold", "link-bold", "confetti-bold", "hand-fist-bold", "cursor-text-bold", "arrow-left-bold", "envelope-open-bold"],
       },
     }),
   ],

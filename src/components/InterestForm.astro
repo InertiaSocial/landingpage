@@ -2,11 +2,6 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="hideInitial transparentInitial">
-  <span>
-    <b> Thanks for your interest!</b> We'll be in touch soon.
-  </span>
-</div>
 <form id="emailForm">
   <input
     required
@@ -33,28 +28,26 @@ import { Icon } from "astro-icon/components";
 <script>
   import party from "party-js";
 
-  const emailForm = document.getElementById("emailForm")! as HTMLFormElement;
-  const submitButton = document.getElementById(
-    "submitButton"
-  )! as HTMLButtonElement;
-  const hiddenText = document.querySelector(".hideInitial")! as HTMLElement;
+  const emailForm = document.getElementById("emailForm") as HTMLFormElement;
+  const submitButton = document.getElementById("submitButton");
+  const hiddenText = document.getElementById("thankYou");
+  const logo = document.querySelector(".logo")! as HTMLElement;
+  const tagline = document.getElementById("tagline");
+  const buttonHolder = document.querySelector(".buttonHolder")! as HTMLElement;
+  const emailInput = document.getElementById("emailInput")! as HTMLInputElement;
+
+  if (!emailForm || !submitButton || !hiddenText || !logo || !tagline || !buttonHolder || !emailInput) {
+    throw new Error("Missing form elements");
+  }
 
   if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
-    const emailInput = document.getElementById(
-      "emailInput"
-    )! as HTMLInputElement;
-    const logo = document.querySelector(".logo")! as HTMLElement;
-    const textBlock = document.querySelector(".textBlock")! as HTMLElement;
-    const buttonHolder = document.querySelector(
-      ".buttonHolder"
-    )! as HTMLElement;
     emailInput.addEventListener("focus", () => {
-      textBlock.style.marginTop = "0.5rem";
+      tagline.style.marginTop = "0.5rem";
       buttonHolder.style.marginTop = "1rem";
       logo.style.marginTop = "1rem";
     });
     emailInput.addEventListener("blur", () => {
-      textBlock.style.marginTop = "2rem";
+      tagline.style.marginTop = "2rem";
       buttonHolder.style.marginTop = "2rem";
       logo.style.marginTop = "10rem";
     });
@@ -74,10 +67,7 @@ import { Icon } from "astro-icon/components";
     )
       .then((response) => {
         emailForm.style.opacity = "0";
-        submitButton.style.opacity = "0";
-        hiddenText.classList.remove("hideInitial");
-        hiddenText.classList.add("textBlock");
-        hiddenText.style.opacity = "1";
+        hiddenText.classList.add("show");
         party.confetti(submitButton, {
           count: party.variation.range(20, 40),
         });
@@ -91,12 +81,3 @@ import { Icon } from "astro-icon/components";
       });
   });
 </script>
-
-<style lang="stylus">
-.hideInitial
-    display none
-
-.transparentInitial
-    opacity 0
-    transition opacity 0.3s ease-in
-</style>
