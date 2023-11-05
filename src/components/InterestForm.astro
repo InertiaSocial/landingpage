@@ -43,14 +43,20 @@ import { Icon } from "astro-icon/components";
     const emailInput = document.getElementById(
       "emailInput"
     )! as HTMLInputElement;
+    const logo = document.querySelector(".logo")! as HTMLElement;
+    const textBlock = document.querySelector(".textBlock")! as HTMLElement;
+    const buttonHolder = document.querySelector(
+      ".buttonHolder"
+    )! as HTMLElement;
     emailInput.addEventListener("focus", () => {
-      (document.querySelector(".logo")! as HTMLElement).style.marginTop =
-        "1rem";
-      emailInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      textBlock.style.marginTop = "0.5rem";
+      buttonHolder.style.marginTop = "1rem";
+      logo.style.marginTop = "1rem";
     });
     emailInput.addEventListener("blur", () => {
-      (document.querySelector(".logo")! as HTMLElement).style.marginTop =
-        "10rem";
+      textBlock.style.marginTop = "2rem";
+      buttonHolder.style.marginTop = "2rem";
+      logo.style.marginTop = "10rem";
     });
   }
 
