@@ -11,6 +11,7 @@ import { Icon } from "astro-icon/components";
   <input
     required
     class="input"
+    id="emailInput"
     type="email"
     name="entry.1223453695"
     placeholder="Enter your email"
@@ -38,6 +39,21 @@ import { Icon } from "astro-icon/components";
   )! as HTMLButtonElement;
   const hiddenText = document.querySelector(".hideInitial")! as HTMLElement;
 
+  if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+    const emailInput = document.getElementById(
+      "emailInput"
+    )! as HTMLInputElement;
+    emailInput.addEventListener("focus", () => {
+      (document.querySelector(".logo")! as HTMLElement).style.marginTop =
+        "1rem";
+      emailInput.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+    emailInput.addEventListener("blur", () => {
+      (document.querySelector(".logo")! as HTMLElement).style.marginTop =
+        "10rem";
+    });
+  }
+
   emailForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const formData = new FormData(this);
@@ -51,7 +67,6 @@ import { Icon } from "astro-icon/components";
       }
     )
       .then((response) => {
-        console.log("Form successfully submitted");
         emailForm.style.opacity = "0";
         submitButton.style.opacity = "0";
         hiddenText.classList.remove("hideInitial");

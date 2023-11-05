@@ -8,12 +8,7 @@ import img from "../images/274.jpg";
 
 <Layout title="Belief">
   <main>
-    <div class="cover">
-      <Image draggable="false" alt="" src={img} quality="high" />
-    </div>
-    <div class="logo" transition:name="logo" transition:animate="initial">
-      <Logo />
-    </div>
+    <Logo />
     <div class="textBlock">
       <p>
         Bet on <span class="text-gradient">news, culture, and more</span> —
@@ -22,6 +17,9 @@ import img from "../images/274.jpg";
     </div>
     <div class="form">
       <InterestForm />
+    </div>
+    <div class="cover">
+      <Image draggable="false" alt="" src={img} quality="high" />
     </div>
   </main>
 </Layout>
@@ -36,13 +34,4 @@ main
     flex-direction column
     align-items center
     justify-content center
-    // height 70vh
-
-.logo
-    transform scale(2)
-    margin-top 10rem
-    transition all 0.2s ease-in-out
-
-    @media (max-width 768px)
-        transform scale(1)
 </style>

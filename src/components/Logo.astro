@@ -1,6 +1,5 @@
-<div>
+<div class="logo" transition:name="logo" transition:animate="initial">
   <svg
-    style="width: 23rem"
     aria-label="Belief"
     xmlns="http://www.w3.org/2000/svg"
     xml:space="preserve"
@@ -51,3 +50,14 @@
     </path>
   </svg>
 </div>
+
+<style lang="stylus">
+  .logo
+    width 40rem
+    margin-top 10rem
+    transition all 0.4s ease-in-out
+
+    @media (max-width 768px)
+      width 80vw
+
+</style>
