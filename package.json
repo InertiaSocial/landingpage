@@ -15,6 +15,7 @@
     "@studio-freight/lenis": "^1.0.27",
     "astro": "^3.3.0",
     "astro-icon": "1.0.0-next.2",
+    "party-js": "^2.2.0",
     "sharp": "0.32.6",
     "stylus": "^0.60.0"
   },

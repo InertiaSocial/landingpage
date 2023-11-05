@@ -3,14 +3,18 @@ import { Icon } from "astro-icon/components";
 ---
 
 <div id="invertedCursor" transition:persist>
-  <Icon name="ph:hand-pointing-bold" class="cursorIcon" id="point" />
-  <Icon name="ph:cursor-bold" class="cursorIcon" id="cursor" />
+  <Icon name="ph:hand-pointing-bold" class="cursorIcon" id="pointCursor" />
+  <Icon name="ph:hand-fist-bold" class="cursorIcon" id="noCursor" />
+  <Icon name="ph:cursor-text-bold" class="cursorIcon" id="textCursor" />
+  <Icon name="ph:link-bold" class="cursorIcon" id="linkCursor" />
 </div>
 
 <script>
   const invertedCursor = document.getElementById("invertedCursor")!;
-  const cursor = document.getElementById("cursor")!;
-  const point = document.getElementById("point")!;
+  const pointCursor = document.getElementById("pointCursor")!;
+  const noCursor = document.getElementById("noCursor")!;
+  const textCursor = document.getElementById("textCursor")!;
+  const linkCursor = document.getElementById("linkCursor")!;
 
   let hoverScale = 1;
   let lastX = 0;
@@ -18,10 +22,8 @@ import { Icon } from "astro-icon/components";
   let lastTime = Date.now();
 
   const animateCursor = (e: MouseEvent, hoverScale: number) => {
-    const x =
-      e.clientX - invertedCursor.offsetWidth / 2;
-    const y =
-      e.clientY - invertedCursor.offsetHeight / 2;
+    const x = e.clientX - invertedCursor.offsetWidth / 2;
+    const y = e.clientY - invertedCursor.offsetHeight / 2;
 
     const currentTime = Date.now();
     const timeDelta = currentTime - lastTime;
@@ -50,8 +52,11 @@ import { Icon } from "astro-icon/components";
     );
   };
 
-  const hoverCursor = (hS: number, c?: boolean) => {
-    const cursorIcon = c ? cursor : point;
+  const hoverCursor = (hS: number, icon?: string) => {
+    let cursorIcon = pointCursor;
+    if (icon === "cursor") cursorIcon = noCursor;
+    if (icon === "text") cursorIcon = textCursor;
+    if (icon === "link") cursorIcon = linkCursor;
     hoverScale = hS;
     cursorIcon.style.opacity = hoverScale === 1 ? "0" : "1";
   };
@@ -63,28 +68,36 @@ import { Icon } from "astro-icon/components";
     }
     window.onmousemove = (e) => {
       animateCursor(e, hoverScale);
-      [
-        "a[href]",
-        ".hoverable",
-        "button",
-        "input",
-        "select",
-        "label",
-        "summary",
-      ].forEach((element) => {
-        document.querySelectorAll(element).forEach((h) => {
-          h.addEventListener("mouseenter", () => (hoverCursor(1.6)));
-          h.addEventListener("mouseleave", () => (hoverCursor(1)));
-          document.addEventListener("astro:after-swap", () => (hoverCursor(1)));
-        });
-      });
     };
+    [".hoverable", "button", "select", "label", "summary"].forEach(
+      (element) => {
+        document.querySelectorAll(element).forEach((h) => {
+          // @ts-ignore
+          h.style.cursor = "none";
+          h.addEventListener("mouseenter", () => hoverCursor(1.6));
+          h.addEventListener("mouseleave", () => hoverCursor(1));
+          document.addEventListener("astro:after-swap", () => hoverCursor(1));
+        });
+      }
+    );
+    document.querySelectorAll("input").forEach((h) => {
+      // @ts-ignore
+      h.style.cursor = "none";
+      h.addEventListener("mouseenter", () => hoverCursor(1.6, "text"));
+      h.addEventListener("mouseleave", () => hoverCursor(1, "text"));
+    });
+    document.querySelectorAll("a[href]").forEach((h) => {
+      // @ts-ignore
+      h.style.cursor = "none";
+      h.addEventListener("mouseenter", () => hoverCursor(1.6, "link"));
+      h.addEventListener("mouseleave", () => hoverCursor(1, "link"));
+    });
     document.addEventListener("mousedown", (e) => {
-      hoverCursor(1.3, true);
+      hoverCursor(1.3, "cursor");
       animateCursor(e, hoverScale);
     });
     document.addEventListener("mouseup", (e) => {
-      hoverCursor(1, true);
+      hoverCursor(1, "cursor");
       animateCursor(e, hoverScale);
     });
     document.addEventListener("mouseout", () => {

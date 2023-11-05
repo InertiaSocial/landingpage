@@ -9,38 +9,87 @@ import img from "../images/274.jpg";
 <Layout title="belief">
   <main>
     <div class="cover">
-      <Image draggable="false" alt="" src={img} quality="high"/>
+      <Image draggable="false" alt="" src={img} quality="high" />
     </div>
     <div class="logo" transition:name="logo" transition:animate="initial">
       <Logo />
     </div>
-    <div class="text-block">
+    <div class="textBlock">
       <p>
         Bet on <span class="text-gradient">news, culture, and more</span> —
         coming soon.
       </p>
     </div>
-    <div class="button-holder">
-      <button
-        class="button"
-        data-tally-width="500"
-        data-tally-open="3qGKx2"
-        data-tally-layout="modal"
-        data-tally-auto-close="5000"
-        data-tally-emoji-text="👋"
-        data-tally-emoji-animation="tada"
-        ><span
-          ><Icon
-            name="ph:envelope-open-bold"
-            style="transform: translateY(1px);"
-          /> Join our waitlist</span
-        ></button
-      >
+    <div class="hideInitial transparentInitial">
+      <span>
+        <b> Thanks for your interest!</b> We'll be in touch soon.
+      </span>
     </div>
+    <form id="emailForm">
+      <input
+        required
+        class="emailInput"
+        type="email"
+        name="entry.1223453695"
+        placeholder="Enter your email"
+      />
+      <div class="buttonHolder">
+        <button type="submit" id="submitButton" class="button">
+          <label>
+            <span
+              ><Icon
+                name="ph:envelope-open-bold"
+                style="transform: translateY(1px);"
+              /> Join our waitlist</span
+            >
+          </label>
+        </button>
+      </div>
+    </form>
   </main>
 </Layout>
 
-<script async src="https://tally.so/widgets/embed.js"></script>
+<script>
+  import party from "party-js";
+
+  const emailForm = document.getElementById("emailForm")! as HTMLFormElement;
+  const submitButton = document.getElementById(
+    "submitButton"
+  )! as HTMLButtonElement;
+  const hiddenText = document.querySelector(".hideInitial")! as HTMLElement;
+
+  emailForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+
+    fetch(
+      "https://docs.google.com/forms/u/0/d/e/1FAIpQLSebh92iCY-GZ28-UiC1iNaXJnMrvjbyXknmF_gkV1MTSqCW0A/formResponse",
+      {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      }
+    )
+      .then((response) => {
+        console.log("Form successfully submitted");
+        emailForm.style.opacity = "0";
+        submitButton.style.opacity = "0";
+        hiddenText.classList.remove("hideInitial");
+        hiddenText.classList.add("textBlock");
+        hiddenText.style.opacity = "1";
+        party.confetti(submitButton, {
+          count: party.variation.range(20, 40),
+        });
+        setTimeout(() => {
+          emailForm.style.display = "none";
+          submitButton.style.display = "none";
+        }, 10);
+      })
+      .catch((error) => {
+        console.error("Error submitting form", error);
+      });
+  });
+</script>
 
 <style lang="scss">
   body {
@@ -93,7 +142,17 @@ import img from "../images/274.jpg";
       transform: scale(1);
     }
   }
-  .text-block {
+
+  .hideInitial {
+    display: none;
+  }
+
+  .transparentInitial {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+  }
+
+  .textBlock {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,7 +174,30 @@ import img from "../images/274.jpg";
     }
   }
 
-  .button-holder {
+  .emailInput {
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700;
+    color: #f8f6f2;
+    background-color: #131910;
+    border: 3px solid #ddd8c4;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    margin: 2rem;
+
+    &:focus {
+      outline: none;
+      width: 300px;
+      border-color: #50808e;
+    }
+  }
+
+  .buttonHolder {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,7 +220,7 @@ import img from "../images/274.jpg";
     }
 
     .button span {
-      background: #131910;
+      background: #273321;
       color: #f8f6f2;
       font-family: "Atkinson Hyperlegible", sans-serif;
       font-weight: 700;
