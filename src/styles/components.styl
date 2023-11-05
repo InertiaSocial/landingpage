@@ -13,15 +13,14 @@
     border-radius 10px
     transition all 0.3s ease-in-out
     margin 2rem 0
-    z-index 2
 
-.input:focus
-    outline none
-    width 300px
-    border-color #50808e
+    &:focus
+        outline none
+        width 300px
+        border-color #50808e
 
-    @media (max-width 768px)
-        width 220px
+        @media (max-width 768px)
+            width 220px
 
 .buttonHolder
     display flex
@@ -44,21 +43,20 @@
         transition all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
         background-color #3d6654
 
-    .button span
-        background #273321
-        color #f8f6f2
-        font-family "Atkinson Hyperlegible", sans-serif
-        font-weight 700
-        display block
-        padding 0.5rem 1rem
-        border-radius 5px
-        border 2px solid #ddd8c4
+        span
+            background #273321
+            color #f8f6f2
+            font-family "Atkinson Hyperlegible", sans-serif
+            font-weight 700
+            display block
+            padding 0.5rem 1rem
+            border-radius 5px
+            border 2px solid #ddd8c4
 
-    .button:active
-        transform translateY(5px)
-        padding-bottom 0px
-        outline 0
-
+        &:active
+            transform translateY(5px)
+            padding-bottom 0px
+            outline 0
 
 .textBlock
     display flex
@@ -80,22 +78,9 @@
         -webkit-background-clip text
         -webkit-text-fill-color transparent
 
-
-.cover
-    position absolute
-    height 100%
-    transform translateY(-500px)
-    filter blur(10px)
-    position center
-    size cover
-    animation scroll 60s infinite ease-in-out alternate
-    z-index -10
-    img
-        user-select none
-        -webkit-user-select none
-
     @media (max-width 768px)
-        display none
+        width 80%
+
 
 .cover
     position absolute

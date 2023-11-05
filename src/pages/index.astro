@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Logo from "../components/Logo.astro";
+import InterestForm from "../components/InterestForm.astro";
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 import img from "../images/274.jpg";
 ---
 
@@ -20,102 +20,29 @@ import img from "../images/274.jpg";
         coming soon.
       </p>
     </div>
-    <div class="hideInitial transparentInitial">
-      <span>
-        <b> Thanks for your interest!</b> We'll be in touch soon.
-      </span>
+    <div class="form">
+      <InterestForm />
     </div>
-    <form id="emailForm">
-      <input
-        required
-        class="input"
-        type="email"
-        name="entry.1223453695"
-        placeholder="Enter your email"
-      />
-      <div class="buttonHolder">
-        <button type="submit" id="submitButton" class="button">
-          <label>
-            <span
-              ><Icon
-                name="ph:envelope-open-bold"
-                style="transform: translateY(1px);"
-              /> Join our waitlist</span
-            >
-          </label>
-        </button>
-      </div>
-    </form>
   </main>
 </Layout>
 
-<script>
-  import party from "party-js";
-
-  const emailForm = document.getElementById("emailForm")! as HTMLFormElement;
-  const submitButton = document.getElementById(
-    "submitButton"
-  )! as HTMLButtonElement;
-  const hiddenText = document.querySelector(".hideInitial")! as HTMLElement;
-
-  emailForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const formData = new FormData(this);
-
-    fetch(
-      "https://docs.google.com/forms/u/0/d/e/1FAIpQLSebh92iCY-GZ28-UiC1iNaXJnMrvjbyXknmF_gkV1MTSqCW0A/formResponse",
-      {
-        method: "POST",
-        body: formData,
-        mode: "no-cors",
-      }
-    )
-      .then((response) => {
-        console.log("Form successfully submitted");
-        emailForm.style.opacity = "0";
-        submitButton.style.opacity = "0";
-        hiddenText.classList.remove("hideInitial");
-        hiddenText.classList.add("textBlock");
-        hiddenText.style.opacity = "1";
-        party.confetti(submitButton, {
-          count: party.variation.range(20, 40),
-        });
-        setTimeout(() => {
-          emailForm.style.display = "none";
-          submitButton.style.display = "none";
-        }, 10);
-      })
-      .catch((error) => {
-        console.error("Error submitting form", error);
-      });
-  });
-</script>
-
 <style lang="stylus">
-  body
+body
     background-color #0d0c07
     transition all 0.2s ease-in-out
 
-  main
+main
     display flex
     flex-direction column
     align-items center
     justify-content center
+    // height 70vh
 
-  .logo
+.logo
     transform scale(2)
     margin-top 10rem
-    z-index 2
     transition all 0.2s ease-in-out
 
     @media (max-width 768px)
-      transform scale(1)
-
-  .hideInitial
-    display none
-
-  .transparentInitial
-    opacity 0
-    transition opacity 0.3s ease-in
-
+        transform scale(1)
 </style>
