@@ -63,9 +63,9 @@ import { Icon } from "astro-icon/components";
 
   const loadCursor = () => {
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
-      invertedCursor.style.display = "none";
       return;
     }
+    invertedCursor.style.display = "unset";
     window.onmousemove = (e: MouseEvent) => {
       animateCursor(e, hoverScale);
     };
@@ -122,6 +122,7 @@ import { Icon } from "astro-icon/components";
                 transition opacity 0.4s ease
 
     #invertedCursor
+        display none
         height 3rem
         width 3rem
         opacity 0.8

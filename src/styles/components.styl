@@ -3,7 +3,6 @@
     height 50px
     border none
     border-radius 5px
-    padding 0 1rem
     font-size 1rem
     font-family "Atkinson Hyperlegible", sans-serif
     font-weight 700
@@ -12,12 +11,16 @@
     border 3px solid #ddd8c4
     border-radius 10px
     transition all 0.3s ease-in-out
-    margin 2rem
+    margin 2rem 0
+    z-index 2
 
 .input:focus
     outline none
     width 300px
     border-color #50808e
+
+    @media (max-width 768px)
+        width 250px
 
 .buttonHolder
     display flex
