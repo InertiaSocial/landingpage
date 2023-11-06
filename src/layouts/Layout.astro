@@ -35,13 +35,17 @@ interface Props {
     <meta name="og:image" content="/opengraph.webp">
     <title>{Astro.props.title}</title>
     <ViewTransitions />
+
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NP8Z30692"></script>
     <script is:inline>
-      document.addEventListener('astro:page-load', () => {
-        window.dataLayer.push("js", new Date());
-        window.dataLayer.push("config", "G-0NP8Z30692");
-      });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0NP8Z30692');
     </script>
+
     <!-- <script>
       import Lenis from "@studio-freight/lenis";
 
