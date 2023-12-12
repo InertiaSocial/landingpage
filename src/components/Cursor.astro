@@ -41,7 +41,7 @@ import { Icon } from "astro-icon/components";
   };
 
   const update = (x: number, y: number, scaleX: number, scaleY: number) => {
-    const transform = `translate(${x}px, ${y}px) scale(${scaleX}, ${scaleY})`;
+    const transform = `translate(${x}px, ${y}px) ${(!Number.isNaN(scaleX) && !Number.isNaN(scaleY) ) ? `scale(${scaleX}, ${scaleY})` : ''}`;
 
     invertedCursor.animate(
       { transform },
@@ -125,7 +125,8 @@ import { Icon } from "astro-icon/components";
       animateCursor(e, hoverScale);
     });
   };
-  document.addEventListener("astro:page-load", loadCursor);
+  // document.addEventListener("astro:page-load", loadCursor);
+  loadCursor();
 </script>
 
 <style lang="stylus">
