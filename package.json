@@ -19,7 +19,7 @@
   "devDependencies": {
     "@iconify-json/ph": "^1.1.6",
     "astro-icon": "1.0.0-next.2",
-    "sharp": "0.33.0",
+    "sharp": "0.32.6",
     "stylus": "^0.62.0"
   },
   "trustedDependencies": [
