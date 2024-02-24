@@ -1,0 +1,62 @@
+<svg:svg width="512" height="512" viewBox="0 0 512 512" version="1.1" xml:space="preserve" sodipodi:docname="inertialogo.svg" inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)" inkscape:export-filename="inertialogo.png" inkscape:export-xdpi="409.6" inkscape:export-ydpi="409.6" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+    <sodipodi:namedview pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="px" inkscape:zoom=".08" inkscape:cx="6156.25" inkscape:cy="4343.75" inkscape:window-width="3354" inkscape:window-height="1396" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g9"/>
+    <svg:defs>
+        <svg:linearGradient id="b" inkscape:collect="always">
+            <svg:stop style="stop-color:#8ebf93;stop-opacity:1" offset="0"/>
+            <svg:stop style="stop-color:#324f33;stop-opacity:1" offset="1"/>
+        </svg:linearGradient>
+        <svg:pattern inkscape:collect="always" xlink:href="#a" id="d" patternTransform="translate(1081.412 390.266)"/>
+        <svg:pattern patternUnits="userSpaceOnUse" width="86.805" height="86.805" patternTransform="translate(1081.412 390.266)" id="a" inkscape:label="Circles in grid" inkscape:collect="always" inkscape:isstock="true">
+            <svg:rect style="opacity:1;fill:none;stroke:#000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;paint-order:stroke markers fill;stop-color:#000" width="85.805" height="85.805" x=".5" y=".5"/>
+            <svg:ellipse style="opacity:1;fill:none;stroke:#000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;paint-order:stroke markers fill;stop-color:#000" cx="43.403" cy="43.403" rx="42.903" ry="42.903"/>
+        </svg:pattern>
+        <svg:clipPath clipPathUnits="userSpaceOnUse">
+            <svg:path style="stroke-width:.1;stroke-linecap:square;paint-order:markers fill stroke;stop-color:#000" d="m 438.25066,553.76374 859.87054,0 v 201.39554 l -859.87054,0 z" sodipodi:nodetypes="ccccc"/>
+        </svg:clipPath>
+        <svg:meshgradient inkscape:collect="always" id="c" gradientUnits="userSpaceOnUse" x="149.069" y="102.786">
+            <svg:meshrow>
+                <svg:meshpatch>
+                    <svg:stop path="c 70.7954,0 141.591,0 212.386,0" style="stop-color:#fff;stop-opacity:1"/>
+                    <svg:stop path="c 0,122.678 0,245.355 0,368.033" style="stop-color:#000;stop-opacity:1"/>
+                    <svg:stop path="c -70.7954,0 -141.591,0 -212.386,0" style="stop-color:#fff;stop-opacity:1"/>
+                    <svg:stop path="c 0,-122.678 0,-245.355 0,-368.033" style="stop-color:#000;stop-opacity:1"/>
+                </svg:meshpatch>
+            </svg:meshrow>
+        </svg:meshgradient>
+        <svg:linearGradient x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse" gradientTransform="translate(-615.956 57.405)">
+            <svg:stop stop-color="hsla(194, 40%, 10%, 0.55)" stop-opacity="1" offset="0%"/>
+            <svg:stop stop-color="rgba(255,255,255,0)" stop-opacity="0" offset="100%"/>
+        </svg:linearGradient>
+        <svg:linearGradient x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
+            <svg:stop stop-color="hsl(114, 57%, 19%)" stop-opacity="1"/>
+            <svg:stop stop-color="rgba(255,255,255,0)" stop-opacity="0" offset="100%"/>
+        </svg:linearGradient>
+        <svg:filter x="0" y="0" width="1" height="1" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <svg:feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="2" seed="178" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence"/>
+            <svg:feColorMatrix type="saturate" values="0" x="0%" y="0%" width="100%" height="100%" in="turbulence" result="colormatrix"/>
+            <svg:feComponentTransfer x="0%" y="0%" width="100%" height="100%" in="colormatrix" result="componentTransfer">
+                <svg:feFuncR type="linear" slope="3"/>
+                <svg:feFuncG type="linear" slope="3"/>
+                <svg:feFuncB type="linear" slope="3"/>
+            </svg:feComponentTransfer>
+            <svg:feColorMatrix x="0%" y="0%" width="100%" height="100%" in="componentTransfer" result="colormatrix2" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -13"/>
+        </svg:filter>
+        <svg:linearGradient inkscape:collect="always" xlink:href="#b" id="e" x1="12.874" y1="38.02" x2="492.874" y2="518.02" gradientUnits="userSpaceOnUse" gradientTransform="translate(3.126 -22.02)"/>
+    </svg:defs>
+    <svg:g inkscape:label="Layer 1" inkscape:groupmode="layer">
+        <svg:g transform="rotate(90 256 283.606)" style="fill:url(#c);fill-opacity:1">
+            <svg:path style="fill:#000;stroke-width:12;stroke-linecap:square;fill-opacity:1" d="m 231.50188,339.18368 c 0,0 0,-129.66875 0,0 z"/>
+            <svg:g style="fill:url(#d);fill-opacity:1">
+                <svg:g transform="rotate(-90 256 283.606)">
+                    <svg:rect style="fill:url(#e);stroke-width:12;stroke-linecap:square" width="480" height="480" x="16" y="16" rx="64" ry="64"/>
+                </svg:g>
+                <svg:g transform="translate(-26.868 53.037)">
+                    <svg:path style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:.59406;stroke-opacity:1" d="m 272.68487,445.88799 c -0.0555,7.85569 0.0523,16.06518 0.33789,24.64345 l 87.49023,0.0338 c 0,0 -26.51939,-82.11565 -27.82812,-124.67724 -1.81054,-58.88085 27.82812,-174.52132 27.82812,-174.52132 0,0 -87.82812,-5.00022 -87.82812,174.52132 z" sodipodi:nodetypes="ccsassc"/>
+                    <svg:path style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:.59406;stroke-opacity:1" d="m 236.55643,445.89157 c 0.0555,7.85569 -0.0523,16.06518 -0.33789,24.64345 l -87.49023,0.0338 c 0,0 26.51939,-82.11565 27.82812,-124.67724 1.81054,-58.88085 -27.82812,-174.52132 -27.82812,-174.52132 0,0 87.82812,-5.00022 87.82812,174.52132 z" sodipodi:nodetypes="ccsassc"/>
+                    <svg:path style="fill:#fff;fill-opacity:1;stroke-width:4.31412;stroke-linecap:square" d="m 360.21577,147.14143 c -0.76146,0.19188 -6.45571,1.50924 -12.65389,2.92747 -19.46611,4.45412 -30.48568,7.70809 -40.13497,11.85148 -16.20179,6.95703 -26.23096,16.18188 -33.60189,30.90707 -6.64686,13.27869 -10.14676,26.50338 -16.51533,62.40466 -1.1575,6.52512 -2.19328,11.62116 -2.30174,11.32457 -0.10849,-0.2966 -0.79226,-4.26019 -1.51955,-8.80799 -9.39611,-58.7539 -19.49091,-79.88422 -44.47992,-93.10484 -10.01141,-5.2966 -21.1333,-8.82765 -45.39117,-14.41112 -7.31603,-1.68395 -13.62278,-3.15912 -14.01499,-3.2782 -0.71114,-0.21589 -0.71114,-0.21722 0,-0.48017 0.39221,-0.14502 4.51494,-1.10355 9.16159,-2.13006 9.60416,-2.12168 15.98662,-3.68965 24.26694,-5.96158 34.80545,-9.54984 49.27833,-22.24657 59.12741,-51.871132 3.73531,-11.23522 6.47516,-23.4086 10.67361,-47.42358 1.1483,-6.56828 2.20029,-11.82611 2.33774,-11.68406 0.28382,0.29327 1.21554,5.17183 2.8117,14.72219 7.0391,42.11745 14.54199,62.259042 28.22597,75.773102 11.59795,11.45389 28.07621,18.1566 64.50753,26.23913 5.81793,1.29074 10.6472,2.41596 10.73172,2.50049 0.0846,0.0846 -0.46931,0.31067 -1.23076,0.50257 z"/>
+                </svg:g>
+                <script/>
+            </svg:g>
+        </svg:g>
+    </svg:g>
+</svg:svg>

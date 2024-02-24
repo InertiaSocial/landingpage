@@ -1,0 +1,42 @@
+<svg version="1.1" xml:space="preserve" viewBox="-0.03 0 443.2 289.98" id="svg15" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs id="defs9">
+    <linearGradient x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse" gradientTransform="translate(-615.96 57.4)" id="linearGradient6">
+      <stop stop-color="hsla(194, 40%, 10%, 0.55)" stop-opacity="1" offset="0%" id="stop5"/>
+      <stop stop-color="rgba(255,255,255,0)" stop-opacity="0" offset="100%" id="stop6"/>
+    </linearGradient>
+    <linearGradient x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse" id="linearGradient8">
+      <stop stop-color="hsl(114, 57%, 19%)" stop-opacity="1" id="stop7"/>
+      <stop stop-color="rgba(255,255,255,0)" stop-opacity="0" offset="100%" id="stop8"/>
+    </linearGradient>
+    <pattern xlink:href="#a" id="c" patternTransform="translate(1081.41 390.27)"/>
+    <pattern patternUnits="userSpaceOnUse" width="86.81" height="86.81" patternTransform="translate(1081.41 390.27)" id="a">
+      <path opacity="1" fill="none" stroke="#000" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-dasharray="none" paint-order="stroke markers fill" stop-color="#000" id="rect1" d="M.5.5h85.81v85.81H.5z"/>
+      <circle cx="43.4" cy="43.4" opacity="1" fill="none" stroke="#000" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-dasharray="none" paint-order="stroke markers fill" stop-color="#000" id="ellipse1" r="42.9"/>
+    </pattern>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath1">
+      <path d="M438.25 553.76h859.87v201.4H438.25z" stroke-width=".1" stroke-linecap="square" paint-order="markers fill stroke" stop-color="#000" id="path1"/>
+    </clipPath>
+    <filter x="0" y="0" width="1" height="1" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB" id="filter9">
+      <feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="2" seed="178" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence" id="feTurbulence8"/>
+      <feColorMatrix type="saturate" values="0" x="0%" y="0%" width="100%" height="100%" in="turbulence" result="colormatrix" id="feColorMatrix8"/>
+      <feComponentTransfer x="0%" y="0%" width="100%" height="100%" in="colormatrix" result="componentTransfer" id="feComponentTransfer8">
+        <feFuncR type="linear" slope="3" id="feFuncR8"/>
+        <feFuncG type="linear" slope="3" id="feFuncG8"/>
+        <feFuncB type="linear" slope="3" id="feFuncB8"/>
+      </feComponentTransfer>
+      <feColorMatrix x="0%" y="0%" width="100%" height="100%" in="componentTransfer" result="colormatrix2" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -13" id="feColorMatrix9"/>
+    </filter>
+  </defs>
+  <g id="g15">
+    <g transform="rotate(90 275.3 264.3)" fill="url(#b)" fill-opacity="1" id="g14">
+      <path d="M231.5 339.18s0-129.67 0 0z" fill="#000" stroke-width="12" stroke-linecap="square" id="path9"/>
+      <g fill="url(#c)" id="g13">
+        <g transform="translate(-99.1 69.04)" id="g12" fill="#fff" fill-opacity="1">
+          <path d="M272.68 445.89c-.05 7.85.06 16.06.34 24.64l87.5.04s-26.53-82.12-27.84-124.68c-1.8-58.88 27.83-174.52 27.83-174.52s-87.83-5-87.83 174.52z" stroke="none" stroke-width=".59" stroke-opacity="1" id="path10"/>
+          <path d="M236.56 445.9c.05 7.85-.06 16.06-.34 24.64l-87.5.03s26.53-82.12 27.84-124.68c1.8-58.88-27.83-174.52-27.83-174.52s87.83-5 87.83 174.52z" stroke="none" stroke-width=".59" stroke-opacity="1" id="path11"/>
+          <path d="M360.22 147.14c-.77.2-6.46 1.51-12.66 2.93-19.46 4.45-30.48 7.7-40.13 11.85-16.2 6.96-26.23 16.18-33.6 30.9-6.65 13.29-10.15 26.51-16.52 62.41-1.16 6.53-2.2 11.62-2.3 11.33-.11-.3-.8-4.26-1.52-8.81-9.4-58.76-19.5-79.89-44.48-93.1-10.01-5.3-21.13-8.83-45.4-14.42-7.3-1.68-13.62-3.16-14-3.28-.72-.21-.72-.21 0-.48.38-.14 4.5-1.1 9.15-2.13 9.6-2.12 16-3.69 24.27-5.96 34.8-9.55 49.28-22.24 59.13-51.87 3.73-11.23 6.47-23.4 10.67-47.42 1.15-6.57 2.2-11.83 2.34-11.69.28.3 1.22 5.18 2.81 14.73 7.04 42.11 14.54 62.26 28.23 75.77 11.6 11.45 28.07 18.16 64.5 26.24 5.82 1.29 10.65 2.41 10.74 2.5.08.08-.47.31-1.23.5z" stroke-width="4.31" stroke-linecap="square" id="path12"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
