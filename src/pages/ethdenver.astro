@@ -715,8 +715,13 @@ main
   position absolute
   width 100vh
   height 100%
-  overflow hidden
+  overflow-x hidden !important
   transform translateY(-100px) !important
+
+  @media (max-width 768px)
+    // transform translate(-50px, -100px) !important
+    // width 110%
+    display none
 
 @keyframes pathAnimation
 	from
