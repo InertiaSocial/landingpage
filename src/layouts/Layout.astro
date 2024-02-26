@@ -37,6 +37,12 @@ interface Props {
     />
     <script is:inline defer src="https://analytics.us.umami.is/script.js" data-website-id="cf779c18-f1f4-48a9-b753-660132c1cead"></script>
     <!-- <meta name="og:image" content="/opengraph.webp"> -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script is:inline >
+        (function () {
+            new LocomotiveScroll();
+        })();
+    </script>
     <title>{Astro.props.title}</title>
 
     <!-- <script>
