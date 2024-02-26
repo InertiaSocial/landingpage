@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 const { showPreSeedInvestorForm } = Astro.props;
 ---
 
-<form id="emailForm">
+<form id="emailForm" data-astro-reload>
   <div class="inputs">
     <input
       required
@@ -61,18 +61,6 @@ const { showPreSeedInvestorForm } = Astro.props;
   const checkbox = document.getElementById("checkbox")! as HTMLInputElement;
 
   document.addEventListener("astro:page-load", () => {
-    if (
-      !emailForm ||
-      !submitButton ||
-      !hiddenText ||
-      !logo ||
-      !tagline ||
-      !buttonHolder ||
-      !emailInput
-   ) {
-      throw new Error("Missing form elements");
-    }
-  
     checkbox.addEventListener("change", (e) => {
       if (e.target?.checked) {
         submitButton.innerHTML = submitButton.innerHTML.replace("Join our waitlist", "Join our investoors");
