@@ -1,29 +1,52 @@
 ---
 import { Icon } from "astro-icon/components";
+const { showPreSeedInvestorForm } = Astro.props;
 ---
 
 <form id="emailForm">
-  <input
-    required
-    class="input"
-    id="emailInput"
-    type="email"
-    name="entry.1223453695"
-    placeholder="Enter your email"
-  />
-  <div class="buttonHolder">
-    <button type="submit" id="submitButton" class="button">
-      <label for="emailInput">
-        <span
-          ><Icon
-            name="ph:envelope-open-bold"
-            style="transform: translateY(1px);"
-          /> Join our waitlist</span
-        >
-      </label>
-    </button>
+  <div class="inputs">
+    <input
+      required
+      class="input"
+      id="emailInput"
+      type="email"
+      name="entry.1223453695"
+      placeholder="Enter your email"
+    />
+
+    {
+      showPreSeedInvestorForm && (
+        <div class="checkwrapper">
+          <input
+            class="check"
+            id="checkbox"
+            type="checkbox"
+            name="entry.1201544823_sentinel"
+            value="1"
+          />
+          <label for="checkbox">
+            <span class="checkbox"> </span>
+          </label>
+          <div class="checklabel">
+            <span>Interested in participating in our pre-seed round?</span>
+          </div>
+        </div>
+      )
+    }
   </div>
 </form>
+<div class="buttonHolder">
+  <button type="submit" id="submitButton" class="button">
+    <label for="emailInput">
+      <span
+        ><Icon
+          name="ph:envelope-open-bold"
+          style="transform: translateY(1px);"
+        /> Join our waitlist</span
+      >
+    </label>
+  </button>
+</div>
 
 <script>
   import party from "party-js";
@@ -35,10 +58,29 @@ import { Icon } from "astro-icon/components";
   const tagline = document.getElementById("tagline");
   const buttonHolder = document.querySelector(".buttonHolder")! as HTMLElement;
   const emailInput = document.getElementById("emailInput")! as HTMLInputElement;
+  const checkbox = document.getElementById("checkbox")! as HTMLInputElement;
 
-  if (!emailForm || !submitButton || !hiddenText || !logo || !tagline || !buttonHolder || !emailInput) {
+  if (
+    !emailForm ||
+    !submitButton ||
+    !hiddenText ||
+    !logo ||
+    !tagline ||
+    !buttonHolder ||
+    !emailInput ||
+    !checkbox
+  ) {
     throw new Error("Missing form elements");
   }
+
+  checkbox.addEventListener("change", (e) => {
+    if (e.target?.checked) {
+      submitButton.innerHTML = submitButton.innerHTML.replace("Join our waitlist", "Join our investoors");
+    }
+    else {
+      submitButton.innerHTML = submitButton.innerHTML.replace("Join our investoors", "Join our waitlist");
+    }
+  });
 
   if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
     emailInput.addEventListener("focus", () => {
@@ -63,7 +105,7 @@ import { Icon } from "astro-icon/components";
         method: "POST",
         body: formData,
         mode: "no-cors",
-      }
+      },
     )
       .then((response) => {
         emailForm.style.opacity = "0";
@@ -81,3 +123,60 @@ import { Icon } from "astro-icon/components";
       });
   });
 </script>
+
+<style lang="stylus">
+.inputs
+    display flex
+    flex-direction column
+    align-items center
+    margin-top 2rem
+
+.check {
+  display: none;
+  &:checked + label .checkbox {
+    &:after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.checkwrapper
+  text-align left
+  display flex
+  flex-direction row
+  align-items center
+  margin-bottom 2rem
+
+  .checklabel
+    width 250px
+    font-weight 600
+    font-size 1.2rem
+    color #f8f6f2
+    margin-left 1rem
+    margin-bottom 0.5rem
+
+.checkbox
+  border: 4px solid #538D5B
+  border-radius: 12px
+  width: 50px
+  height: 50px
+  display: inline-block
+  position: relative
+  transition all 0.3s ease-in-out
+  &:hover
+    transform scale(1.1);
+
+  &:after
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 50px;
+    height: 50px;
+    background linear-gradient(75deg, #50808e 0%, #a3c9a8 100%);
+    border-radius: 8px;
+    transition: 0.3s;
+  
+</style>
