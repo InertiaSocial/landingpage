@@ -230,7 +230,9 @@ calculateValues(chart4);
             exagerate={true}
           />
         </div>
-        <p class="pmarkettext" data-scroll data-scroll-speed="0.1">Prediction&nbsp;</p>
+        <p class="pmarkettext" data-scroll data-scroll-speed="0.1">
+          Prediction&nbsp;
+        </p>
         <p class="pmarkettext" data-scroll data-scroll-speed="-0.1">Markets</p>
       </div>
       <div style="margin-bottom: 30rem;">
@@ -369,7 +371,6 @@ calculateValues(chart4);
       <Image draggable="false" alt="" src={img} quality="high" />
     </div>
   </main>
-
 </Layout>
 
 <style>
@@ -733,6 +734,10 @@ main
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    new LocomotiveScroll();
+    new LocomotiveScroll({
+      lenisOptions: {
+        smoothTouch: true,
+      },
+    });
   });
 </script>
