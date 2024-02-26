@@ -198,7 +198,7 @@ calculateValues(chart4);
         data-scroll-speed="0.4"
       >
       </div>
-      <div style="display: flex; font-size 100rem" class="decentralized">
+      <div class="decentralized">
         <p data-scroll data-scroll-class="scroll-rotate-11">D</p>
         <p data-scroll data-scroll-class="scroll-rotate-1">e</p>
         <p data-scroll data-scroll-class="scroll-rotate-2">c</p>
@@ -216,7 +216,7 @@ calculateValues(chart4);
       <div
         class="c-scroll_section -centered -full"
         data-scroll
-        style="display:flex; font-size: 8vw;"
+        style="display:flex; font-size: 10rem;"
       >
         <div class="graphContainer" data-scroll data-scroll-speed="0.1">
           <PostGraph
@@ -350,7 +350,7 @@ calculateValues(chart4);
         class="c-scroll_section -full -centered cta"
         data-scroll
         data-scroll-repeat
-        data-scroll-speed="-0.5"
+        data-scroll-speed="-0.2"
         data-scroll-class="scroll-opacity"
         style="margin: 30rem 0;"
       >
@@ -448,7 +448,7 @@ main
     font-weight 900
     margin-top 5rem
     margin-bottom 1rem
-    font-size 10vh
+    font-size 14rem
     transition font-size 0.3s ease-in-out
     display flex
     flex-direction column
@@ -466,17 +466,17 @@ main
     font-size 5rem !important
 
 .secondline
-  font-size 5vh
+  font-size 4rem
   @media (max-width: 768px)
     font-size 1.7rem
     margin-left 25.5rem
 
 .scroll-scale
-  font-size 18vh
+  font-size 20rem
   transition all 1s ease-out
 
   @media screen and (max-width: 768px)
-    font-size 8vh !important
+    font-size 10rem !important
 
 .scroll-rotate-1
   color #a3c9a8
@@ -641,10 +641,13 @@ main
         transform translateY(0px)
 
 .decentralized
-  font-size 10vw  
+  display flex
+  width 100%
+  justify-content center
+  font-size 8rem
 
 .bodytext
-  font-size 4vw
+  font-size 3rem
 
   @media (max-width 768px)
     font-size 1.5rem !important
@@ -652,7 +655,8 @@ main
     margin-left 25.5rem
 
 .cta
-  opacity 0.2
+  opacity 0
+  transition all 0.3s ease-in-out
 
 .scroll-opacity
   opacity 1
