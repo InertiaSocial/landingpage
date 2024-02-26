@@ -1,50 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import InterestForm from "../components/InterestForm.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import PostGraph from "../components/PostGraph.astro";
 import img from "../images/274.jpg";
 ---
 
 <Layout title="Inertia">
   <main>
-    <div class="o-scroll" id="js-scroll" data-scroll-container data-enable-touch-speed>
+    <div class="o-scroll" id="js-scroll" data-scroll-container>
+      <div class="c-scroll_offset"></div>
       <div
-        class="c-scroll_offset"
+        style="opacity: calc(0.5 - var(--progress));"
+        data-scroll
+        data-scroll-css-progress
+        class="c-scroll_offset scrollprompt"
       >
-      </div>
-      <div style="opacity: calc(0.2 - var(--progress));" data-scroll data-scroll-css-progress class="c-scroll_offset scrollprompt">
-        <Icon name="ph:mouse-simple-bold"/>
-        <p>Scroooooll</p>
+        <Icon name="ph:mouse-simple-bold" />
+        <p class="scrolltext">
+          <span>S</span>
+          <span>c</span>
+          <span>r</span>
+          <span>o</span>
+          <span>o</span>
+          <span>o</span>
+          <span>o</span>
+          <span>o</span>
+          <span>o</span>
+          <span>l</span>
+          <span>l</span>
+        </p>
       </div>
       <div class="c-scroll_section -full -centered header">
         <div style="display:flex; font-size: 10vw;">
-          <p data-scroll data-scroll-speed="-.1">
-            Hey
-          </p>
-          <p
-            data-scroll
-           
-            data-scroll-speed="0"
-            style="margin-left: 2rem"
-          >
-            D
-          </p>
-          <p data-scroll data-scroll-speed=".05">
-            e
-          </p>
-          <p data-scroll data-scroll-speed=".1">
-            n
-          </p>
-          <p data-scroll data-scroll-speed=".15">
-            v
-          </p>
-          <p data-scroll data-scroll-speed=".2">
-            e
-          </p>
-          <p data-scroll data-scroll-speed=".25">
-            r
-          </p>
+          <p data-scroll data-scroll-speed="-.1">Hey</p>
+          <p data-scroll data-scroll-speed="0" style="margin-left: 2rem">D</p>
+          <p data-scroll data-scroll-speed=".05">e</p>
+          <p data-scroll data-scroll-speed=".1">n</p>
+          <p data-scroll data-scroll-speed=".15">v</p>
+          <p data-scroll data-scroll-speed=".2">e</p>
+          <p data-scroll data-scroll-speed=".25">r</p>
           <svg
             data-scroll
             data-scroll-speed=".3"
@@ -73,18 +68,25 @@ import img from "../images/274.jpg";
             </style>
           </svg>
         </div>
-        <div style="font-size: 5vh;" class="c-scroll_section" data-scroll data-scroll-speed="0.1">
-          Are you ready for something you've<br>
-          <!-- never seen before? -->
-          <span style="transform: rotate(10deg)" class="scroll-rotate-1" data-scroll data-scroll-class="scroll-rotate-1">never</span>
-          <span style="transform: rotate(0);" data-scroll data-scroll-class="scroll-rotate-2">seen</span>
-          <span style="transform: rotate(0);" data-scroll data-scroll-class="scroll-rotate-3">before?</span>
+        <div
+          style="font-size: 5vh;"
+          class="c-scroll_section"
+          data-scroll
+          data-scroll-speed="0.1"
+        >
+          Are you ready for something you've<br />
+          <span class="neverseen">never seen before?</span>
         </div>
       </div>
-      <div class="c-scroll_section -full -centered welcome" data-scroll data-scroll-speed="0.4">
+      <div
+        class="c-scroll_section -full -centered welcome"
+        data-scroll
+        data-scroll-speed="0.4"
+      >
         <div class="welcome">
-          <p data-scroll data-scroll-speed="-.1">WELCOME</p>
-          <p data-scroll data-scroll-speed="-.05">TO</p>
+          <!-- Welcome To -->
+          <!-- <p style="font-size: 8vw" data-scroll data-scroll-speed="-.1">WELCOME</p>
+          <p style="font-size: 9vw" data-scroll data-scroll-speed="-.05">TO</p> -->
           <div style="display:flex; font-size: 10vw;">
             <p
               data-scroll
@@ -93,31 +95,107 @@ import img from "../images/274.jpg";
             >
               I
             </p>
-            <p data-scroll data-scroll-speed="-.05" data-scroll-class="scroll-scale">
+            <p
+              data-scroll
+              data-scroll-speed="-.05"
+              data-scroll-class="scroll-scale"
+            >
               N
             </p>
-            <p data-scroll data-scroll-speed="-.1" data-scroll-class="scroll-scale">
+            <p
+              data-scroll
+              data-scroll-speed="-.1"
+              data-scroll-class="scroll-scale"
+            >
               E
             </p>
-            <p data-scroll data-scroll-speed="-.15" data-scroll-class="scroll-scale">
+            <p
+              data-scroll
+              data-scroll-speed="-.15"
+              data-scroll-class="scroll-scale"
+            >
               R
             </p>
-            <p data-scroll data-scroll-speed="-.2" data-scroll-class="scroll-scale">
+            <p
+              data-scroll
+              data-scroll-speed="-.2"
+              data-scroll-class="scroll-scale"
+            >
               T
             </p>
-            <p data-scroll data-scroll-speed="-.25" data-scroll-class="scroll-scale">
+            <p
+              data-scroll
+              data-scroll-speed="-.25"
+              data-scroll-class="scroll-scale"
+            >
               I
             </p>
-            <p data-scroll data-scroll-speed="-.3" data-scroll-class="scroll-scale">
+            <p
+              data-scroll
+              data-scroll-speed="-.3"
+              data-scroll-class="scroll-scale"
+            >
               A
             </p>
           </div>
         </div>
       </div>
-      <div class="c-scroll_section -full -centered" data-scroll data-scroll-speed="0.4"></div>
-        A new way to
+      <div
+        class="c-scroll_section -centered"
+        data-scroll
+        data-scroll-speed="0.4"
+      >
+      </div>
+      <div style="display: flex; font-size 100rem" class="">
+        <p data-scroll data-scroll-class="scroll-rotate-11">D</p>
+        <p data-scroll data-scroll-class="scroll-rotate-1">e</p>
+        <p data-scroll data-scroll-class="scroll-rotate-2">c</p>
+        <p data-scroll data-scroll-class="scroll-rotate-3">e</p>
+        <p data-scroll data-scroll-class="scroll-rotate-4">n</p>
+        <p data-scroll data-scroll-class="scroll-rotate-5">t</p>
+        <p data-scroll data-scroll-class="scroll-rotate-6">r</p>
+        <p data-scroll data-scroll-class="scroll-rotate-7">a</p>
+        <p data-scroll data-scroll-class="scroll-rotate-8">l</p>
+        <p data-scroll data-scroll-class="scroll-rotate-9">i</p>
+        <p data-scroll data-scroll-class="scroll-rotate-10">z</p>
+        <p data-scroll data-scroll-class="scroll-rotate-11">e</p>
+        <p data-scroll data-scroll-class="scroll-rotate-12">d</p>
+      </div>
+      <div
+        class="c-scroll_section -centered -full"
+        data-scroll
+        style="display:flex; font-size: 8vw;"
+      >
+        <div class="graphContainer" data-scroll data-scroll-speed="0.1">
+          <PostGraph
+            values={[44, 41, 5, 50, 5, 17, 22, 56, 37, 80]}
+            height={400}
+            color="#a3c9a8"
+            points="10"
+            id="4557159158955677573"
+          />
+        </div>
+        <p data-scroll data-scroll-speed="0.1">Prediction&nbsp;</p>
+        <p data-scroll data-scroll-speed="-0.1">Markets</p>
+      </div>
+      <div class="c-scroll_section" style="margin-bottom: 30rem;">
+        <p class="bodytext">
+          About absolutely anything you can dream of - seriously.
+        </p>
+        <p class="bodytext" data-scroll>You create the markets you care about, you earn
+          <span style="font-weight: 800;">rev share</span>.
+        </p>
+      </div>
+      <div style="margin-bottom: 6rem;">
+        <p class="bodytext">
+          Built for the hyper degen in mind...
+        </p>
+        <p class="bodytext" style="text-align: right;">
+          And normies alike.
+        </p>
       </div>
     </div>
+
     <div class="cover">
       <Image draggable="false" alt="" src={img} quality="high" />
     </div>
@@ -145,6 +223,7 @@ import img from "../images/274.jpg";
 <style lang="stylus">
 body
     background-color #0d0c07
+    color: #fff
     transition all 0.2s ease-in-out
 
 h1, h2
@@ -155,7 +234,7 @@ h1, h2
     color #fff
     font-weight 900
     font-size 10rem
-    margin-top 50%
+    margin-top 30%
 
 h2
     font-size 4rem
@@ -163,41 +242,107 @@ h2
 
 main
     display flex
+    margin 0 10%
     flex-direction column
     align-items center
     justify-content center
 
+.neverseen
+  background: radial-gradient(
+    circle farthest-corner at center center,
+    #a3c9a8,
+    #324f33
+  ) no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
 .welcome
     color #fff
     font-weight 900
-    margin-top 4rem
+    margin-top 5rem
+    margin-bottom 1rem
     font-size 10vh
-    transition all 0.3s ease-in-out
+    transition font-size 0.3s ease-in-out
     display flex
     flex-direction column
     align-items center
     justify-content center
 
+.scroll-scale
+  font-size 18vh
+  transition all 1s ease-out
 
 .scroll-rotate-1
-    transform rotate(10deg)
-    transition all 0.3s ease-in-out
+  color #a3c9a8
+  margin-top 0.1rem
+  transform rotate(10deg)
+  transition all 1s ease-in-out
 
 .scroll-rotate-2
-    transform rotate(-10deg)
-    transition all 0.3s ease-in-out
+  color #a3c9a8
+  margin-top -0.1rem
+  transform rotate(-5deg)
+  transition all 1s ease-in-out
 
 .scroll-rotate-3
-    transform rotate(20deg)
-    transition all 0.3s ease-in-out
+  color #a3c9a8
+  margin-top 0.2rem
+  transform rotate(12deg)
+  transition all 1s ease-in-out
 
 .scroll-rotate-4
-    transform rotate(-20deg)
-    transition all 0.3s ease-in-out
+  color #a3c9a8
+  margin-top -0.2rem
+  transform rotate(4deg)
+  transition all 1s ease-in-out
 
-.scroll-scale
-  font-size 20vh
-  transition all 1s ease-out
+.scroll-rotate-5
+  color #a3c9a8
+  margin-top 0.15rem
+  transform rotate(-6deg)
+  transition all 1s ease-in-out
+
+.scroll-rotate-6
+  color #a3c9a8
+  margin-top -0.15rem
+  transform rotate(8deg)
+  transition all 1s ease-in-out
+
+.scroll-rotate-7
+  color #a3c9a8
+  margin-top 0.1rem
+  transform rotate(-8deg)
+  transition all 1s ease-in-out
+
+.scroll-rotate-8
+  color #a3c9a8
+  margin-top -0.1rem
+  transform rotate(14deg)
+  transition all 1s ease-in-out
+
+.scroll-rotate-9
+  color #a3c9a8
+  margin-top 0.05rem
+  transform rotate(-10deg)
+  transition all 1s ease-in-out
+
+.scroll-rotate-10
+  color #a3c9a8
+  margin-top -0.05rem
+  transform rotate(16deg)
+  transition all 1s ease-in-out
+
+.scroll-rotate-11
+  color #a3c9a8
+  margin-top 0.05rem
+  transform rotate(-12deg)
+  transition all 1s ease-in-out
+
+.scroll-rotate-12
+  color #a3c9a8
+  margin-top -0.05rem
+  transform rotate(18deg)
+  transition all 1s ease-in-out
 
 .scrollprompt
   font-size 4rem
@@ -211,13 +356,67 @@ main
   text-align center
   color #fff
   transition all 0.3s ease-in-out
-  p
+  .scrolltext
     font-size 1.5rem
     margin-top -2rem
+    span
+      margin-right 0rem !important
+      display inline-block
+      animation: scroll 1s infinite
+      display inline-block
+      margin-right 0.5rem
+      &:nth-child(1)
+        animation-delay: 0s
+      &:nth-child(2)
+        animation-delay: 0.1s
+      &:nth-child(3)
+        animation-delay: 0.2s
+      &:nth-child(4)
+        animation-delay: 0.3s
+      &:nth-child(5)
+        animation-delay: 0.4s
+      &:nth-child(6)
+        animation-delay: 0.5s
+      &:nth-child(7)
+        animation-delay: 0.6s
+      &:nth-child(8)
+        animation-delay: 0.7s
+      &:nth-child(9)
+        animation-delay: 0.8s
+      &:nth-child(10)
+        animation-delay: 0.9s
+      &:nth-child(11)
+        animation-delay: 1s
+      &:nth-child(12)
+        animation-delay: 1.1s 
+
+@keyframes scroll
+    0%
+        transform translate(0px)
+    25%
+        transform translateY(-4px)  
+    50%
+        transform translateY(3px)
+    75%
+        transform translateY(-1px)
+    100%
+        transform translateY(0px)
 
 p
-  margin-bottom 1rem
-
+  font-size 10vw  
+.bodytext
+  font-size 4vw
+.graphContainer
+  position absolute
+  width 70rem
+  margin-left 10%
+  height 100%
+  
+@keyframes pathAnimation
+	from
+		stroke-dashoffset 2000
+	to
+		stroke-dashoffset 0
 </style>
 
 <script>
