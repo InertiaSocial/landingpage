@@ -8,6 +8,7 @@ import PostReply from "../components/skeletons/PostReply.astro";
 import Reaction from "../components/skeletons/Reaction.astro";
 import PostGraph from "../components/PostGraph.astro";
 import img from "../images/274.jpg";
+import dungeonMeshi from "../images/dungeonmeshi.avif";
 
 interface Chart {
   values: number[];
@@ -321,7 +322,7 @@ calculateValues(chart4);
               </div>
               <div class="card-media">
                 <div class="media" style="position: relative;height: 250px; background-position: top">
-                  <img src="/public/dungeonmeshi.avif">
+                  <Image src={dungeonMeshi} alt="Dungeon Meshi GIF" />
                 </div>
               </div>
               <div class="reactions" style="margin-top: 6rem">

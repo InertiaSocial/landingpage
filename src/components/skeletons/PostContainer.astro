@@ -6,7 +6,7 @@ let { style, classes, doingBad } = Astro.props;
 let textures = await Astro.glob("../../../public/textures/*.avif");
 
 textures = textures.map(
-  (file) => file.default.src.match(/\/public(.+\.avif)/)[1]
+  (file) => file.default.src
 );
 const randomTexture = uniqueRandomArray(textures);
 
