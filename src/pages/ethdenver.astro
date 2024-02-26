@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import Logo from "../components/Logo.astro";
 import PostContainer from "../components/skeletons/PostContainer.astro";
 import Post from "../components/skeletons/Post.astro";
 import PostReply from "../components/skeletons/PostReply.astro";
@@ -9,6 +10,7 @@ import Reaction from "../components/skeletons/Reaction.astro";
 import PostGraph from "../components/PostGraph.astro";
 import img from "../images/274.jpg";
 import dungeonMeshi from "../images/dungeonmeshi.avif";
+import InterestForm from "../components/InterestForm.astro";
 
 interface Chart {
   values: number[];
@@ -232,10 +234,10 @@ calculateValues(chart4);
       </div>
       <div class="c-scroll_section" style="margin-bottom: 30rem;">
         <p class="bodytext">
-          About absolutely anything you can dream of - seriously.
+          Predict the outcome of events for absolutely anything you can dream of - and share them to your community.
         </p>
-        <p class="bodytext" data-scroll>You create the markets you care about, you earn
-          <span style="font-weight: 800;">rev share</span>.
+        <p class="bodytext" data-scroll>You create the markets you care about, and you'll
+          <span style="font-weight: 800;">earn from them</span>.
         </p>
       </div>
       <div style="margin-bottom: 6rem;">
@@ -334,8 +336,16 @@ calculateValues(chart4);
           </PostContainer>
         </div>
       </div>
+      <div>
+        <p class="bodytext">
+          Find your community with a sense of inertia.
+        </p>
+      </div>
+      <div class="c-scroll_section -full -centered cta" data-scroll data-scroll-speed="-0.5" style="margin: 30rem 0;">
+        <Logo />
+        <InterestForm showPreSeedInvestorForm>
+      </div>
     </div>
-
     <div class="cover">
       <Image draggable="false" alt="" src={img} quality="high" />
     </div>
@@ -609,7 +619,7 @@ main
 
   @media (max-width 768px)
     margin-left 0
-  
+
 @keyframes pathAnimation
 	from
 		stroke-dashoffset 2000
