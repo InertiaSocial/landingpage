@@ -10,6 +10,9 @@ import img from "../images/274.jpg";
 <Layout title="Inertia">
   <main>
     <Logo />
+    <div class="denverCtaWrapper">
+      <a class="denverCta" href="/ethdenver">Here from Denver?</a>
+    </div> 
     <div id="tagline" class="textBlock">
       <span>
         Join and Discover <span class="text-gradient">Collective Insight</span> —
@@ -40,4 +43,21 @@ main
     flex-direction column
     align-items center
     justify-content center
+
+.denverCtaWrapper
+  display flex
+  justify-content center
+  align-items center 
+  margin-top 3rem
+
+  .denverCta
+    font-size 3rem
+    color #f8f6f2
+    text-decoration none
+    text-align center
+    transition all 0.2s ease-in-out
+
+    &:hover
+      color #a3c9a8
+      transform scale(1.1)
 </style>

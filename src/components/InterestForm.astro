@@ -60,66 +60,68 @@ const { showPreSeedInvestorForm } = Astro.props;
   const emailInput = document.getElementById("emailInput")! as HTMLInputElement;
   const checkbox = document.getElementById("checkbox")! as HTMLInputElement;
 
-  if (
-    !emailForm ||
-    !submitButton ||
-    !hiddenText ||
-    !logo ||
-    !tagline ||
-    !buttonHolder ||
-    !emailInput
- ) {
-    throw new Error("Missing form elements");
-  }
-
-  checkbox.addEventListener("change", (e) => {
-    if (e.target?.checked) {
-      submitButton.innerHTML = submitButton.innerHTML.replace("Join our waitlist", "Join our investoors");
+  document.addEventListener("astro:page-load", () => {
+    if (
+      !emailForm ||
+      !submitButton ||
+      !hiddenText ||
+      !logo ||
+      !tagline ||
+      !buttonHolder ||
+      !emailInput
+   ) {
+      throw new Error("Missing form elements");
     }
-    else {
-      submitButton.innerHTML = submitButton.innerHTML.replace("Join our investoors", "Join our waitlist");
-    }
-  });
-
-  if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
-    emailInput.addEventListener("focus", () => {
-      tagline.style.marginTop = "0.5rem";
-      buttonHolder.style.marginTop = "1rem";
-      logo.style.marginTop = "1rem";
+  
+    checkbox.addEventListener("change", (e) => {
+      if (e.target?.checked) {
+        submitButton.innerHTML = submitButton.innerHTML.replace("Join our waitlist", "Join our investoors");
+      }
+      else {
+        submitButton.innerHTML = submitButton.innerHTML.replace("Join our investoors", "Join our waitlist");
+      }
     });
-    emailInput.addEventListener("blur", () => {
-      tagline.style.marginTop = "2rem";
-      buttonHolder.style.marginTop = "2rem";
-      logo.style.marginTop = "10rem";
-    });
-  }
-
-  emailForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const formData = new FormData(this);
-
-    fetch(
-      "https://docs.google.com/forms/u/0/d/e/1FAIpQLSebh92iCY-GZ28-UiC1iNaXJnMrvjbyXknmF_gkV1MTSqCW0A/formResponse",
-      {
-        method: "POST",
-        body: formData,
-        mode: "no-cors",
-      },
-    )
-      .then((response) => {
-        emailForm.style.opacity = "0";
-        hiddenText.classList.add("show");
-        party.confetti(submitButton, {
-          count: party.variation.range(20, 40),
-        });
-        setTimeout(() => {
-          emailForm.style.display = "none";
-          submitButton.style.display = "none";
-        }, 10);
-      })
-      .catch((error) => {
-        console.error("Error submitting form", error);
+  
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+      emailInput.addEventListener("focus", () => {
+        tagline.style.marginTop = "0.5rem";
+        buttonHolder.style.marginTop = "1rem";
+        logo.style.marginTop = "1rem";
       });
+      emailInput.addEventListener("blur", () => {
+        tagline.style.marginTop = "2rem";
+        buttonHolder.style.marginTop = "2rem";
+        logo.style.marginTop = "10rem";
+      });
+    }
+  
+    emailForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+  
+      fetch(
+        "https://docs.google.com/forms/u/0/d/e/1FAIpQLSebh92iCY-GZ28-UiC1iNaXJnMrvjbyXknmF_gkV1MTSqCW0A/formResponse",
+        {
+          method: "POST",
+          body: formData,
+          mode: "no-cors",
+        },
+      )
+        .then((response) => {
+          emailForm.style.opacity = "0";
+          hiddenText.classList.add("show");
+          party.confetti(submitButton, {
+            count: party.variation.range(20, 40),
+          });
+          setTimeout(() => {
+            emailForm.style.display = "none";
+            submitButton.style.display = "none";
+          }, 10);
+        })
+        .catch((error) => {
+          console.error("Error submitting form", error);
+        });
+    });
   });
 </script>
 
