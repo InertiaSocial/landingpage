@@ -12,10 +12,12 @@
   "dependencies": {
     "@astrojs/partytown": "^2.0.2",
     "@fontsource/atkinson-hyperlegible": "^5.0.15",
+    "@fontsource/flow-circular": "^5.0.18",
     "@studio-freight/lenis": "^1.0.27",
     "astro": "^4.0.4",
     "locomotive-scroll": "beta",
-    "party-js": "^2.2.0"
+    "party-js": "^2.2.0",
+    "unique-random-array": "^3.0.0"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.1.6",

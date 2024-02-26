@@ -1,62 +1,66 @@
 ---
-const {
-  values,
-  height,
-  color,
-  points,
-  id,
-} = Astro.props;
+const { values, height, color, points, id } = Astro.props;
+
+const exagerate = Astro.props.exagerate ?? false;
 ---
 
 <div id={`parent-${id}`} class="graph">
   <svg height={height} width="100%" id={id} class="graphLine"></svg>
+  { !exagerate && <span id={`label-${id}`} class="label">
+    <span id={`label-number-${id}`}></span>
+    <span id={`label-result-${id}`} class="result"></span>
+  </span> }
 </div>
 
-<script define:vars={{ color, values, height, points, id }}>
-    const svg = document.getElementById(id);
-    const svgParent = document.getElementById(`parent-${id}`);
-    const label = document.getElementById(`label-${id}`);
-    const labelNumber = document.getElementById(`label-number-${id}`);
-    const labelResult = document.getElementById(`label-result-${id}`);
-    if (svg) {
-      let path = `M 0 ${values[0]}`;
-      const parentRect = svgParent.getBoundingClientRect();
-      const width = parentRect.width;
+<script define:vars={{ color, values, height, points, id, exagerate }}>
+  const svg = document.getElementById(id);
+  const svgParent = document.getElementById(`parent-${id}`);
+  const label = document.getElementById(`label-${id}`);
+  const labelNumber = document.getElementById(`label-number-${id}`);
+  const labelResult = document.getElementById(`label-result-${id}`);
+  if (svg) {
+    let path = `M 0 ${values[0]}`;
+    const parentRect = svgParent.getBoundingClientRect();
+    const width = parentRect.width;
 
-      for (let i = 1; i < points; i++) {
-        const x1 = Math.round((width / (points - 1)) * (i - 0.5));
-        const y1 = values[i - 1];
-        const x2 = Math.round((width / (points - 1)) * (i - 0.5));
-        const y2 = values[i];
-        const x = Math.round((width / (points - 1)) * i);
-        const y = values[i];
-        path += ` C ${x1} ${y1} ${x2} ${y2} ${x} ${y}`;
-      }
-      const pathElement = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "path"
-      );
-      pathElement.setAttribute("d", path);
-      pathElement.setAttribute("stroke", color);
-      pathElement.setAttribute("stroke-width", "20");
-      pathElement.setAttribute("stroke-linecap", "round");
-      pathElement.setAttribute("stroke-linejoin", "round");
-      pathElement.setAttribute("fill", "none");
-      pathElement.setAttribute("transform", "scale(1, -1) translate(0, -100)");
-      pathElement.style.animation = "pathAnimation 2s ease-in-out infinite";
-      pathElement.style.strokeDasharray = "1000";
-      pathElement.style.strokeDashoffset = "1000";
-      svg.appendChild(pathElement);
-      label.style.left = `${width - 20}px`;
-      label.style.bottom = `${values[9]}px`;
-      if (values[9] > 50) {
-        labelNumber.innerHTML = `<b>${values[9].toString()}</b>&cent;`;
-        labelResult.innerText = " Yes";
-      } else {
-        labelNumber.innerHTML = `<b>${values[9].toString()}</b>&cent;`;
-        labelResult.innerText = " No";
-      }
+    for (let i = 1; i < points; i++) {
+      const x1 = Math.round((width / (points - 1)) * (i - 0.5));
+      const y1 = values[i - 1];
+      const x2 = Math.round((width / (points - 1)) * (i - 0.5));
+      const y2 = values[i];
+      const x = Math.round((width / (points - 1)) * i);
+      const y = values[i];
+      path += ` C ${x1} ${y1} ${x2} ${y2} ${x} ${y}`;
     }
+    const pathElement = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "path",
+    );
+    pathElement.setAttribute("d", path);
+    pathElement.setAttribute("stroke", color);
+    if (exagerate) {
+      pathElement.setAttribute("stroke-width", "20");
+    } else {
+      pathElement.setAttribute("stroke-width", "5");
+    }
+    pathElement.setAttribute("stroke-linecap", "round");
+    pathElement.setAttribute("stroke-linejoin", "round");
+    pathElement.setAttribute("fill", "none");
+    pathElement.setAttribute("transform", "scale(1, -1) translate(0, -100)");
+    pathElement.style.animation = "pathAnimation 2s ease-in-out infinite";
+    pathElement.style.strokeDasharray = "1000";
+    pathElement.style.strokeDashoffset = "1000";
+    svg.appendChild(pathElement);
+    label.style.left = `${width - 20}px`;
+    label.style.bottom = `${values[9]}px`;
+    if (values[9] > 50) {
+      labelNumber.innerHTML = `<b>${values[9].toString()}</b>&cent;`;
+      labelResult.innerText = " Yes";
+    } else {
+      labelNumber.innerHTML = `<b>${values[9].toString()}</b>&cent;`;
+      labelResult.innerText = " No";
+    }
+  }
 </script>
 
 <style lang="stylus">

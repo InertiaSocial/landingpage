@@ -2,8 +2,62 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import PostContainer from "../components/skeletons/PostContainer.astro";
+import Post from "../components/skeletons/Post.astro";
+import PostReply from "../components/skeletons/PostReply.astro";
+import Reaction from "../components/skeletons/Reaction.astro";
 import PostGraph from "../components/PostGraph.astro";
 import img from "../images/274.jpg";
+
+interface Chart {
+  values: number[];
+  color?: string;
+  doingBad?: boolean;
+  id?: string;
+}
+
+const chartPoints = 10;
+const chartHeight = 100;
+// const chartValues = Array.from({ length: chartPoints }, () =>
+// function getRandomInt(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+//   getRandomInt(10, chartHeight - 10)
+// );
+
+const chart1: Chart = {
+  values: [45, 57, 15, 9, 15, 89, 55, 67, 75, 73],
+};
+
+const chart2: Chart = {
+  values: [44, 51, 5, 84, 5, 17, 22, 56, 37, 70],
+};
+
+const chart3: Chart = {
+  values: [8, 65, 32, 71, 47, 77, 3, 21, 83, 33],
+};
+
+const chart4: Chart = {
+  values: [24, 21, 69, 45, 53, 56, 35, 18, 32, 28],
+};
+
+function calculateValues(chart: Chart) {
+  if (chart.values[9] < chartHeight / 2) {
+    chart.color = "var(--error)";
+    chart.doingBad = true;
+  } else {
+    chart.color = "var(--accent)";
+    chart.doingBad = false;
+  }
+  chart.id = chart.values.reduce((acc, currentValue) => {
+    return `${acc}${String(currentValue)}`;
+  }, "");
+}
+
+calculateValues(chart1);
+calculateValues(chart2);
+calculateValues(chart3);
+calculateValues(chart4);
 ---
 
 <Layout title="Inertia">
@@ -148,7 +202,7 @@ import img from "../images/274.jpg";
         data-scroll-speed="0.4"
       >
       </div>
-      <div style="display: flex; font-size 100rem" class="">
+      <div style="display: flex; font-size 100rem" class="decentralized">
         <p data-scroll data-scroll-class="scroll-rotate-11">D</p>
         <p data-scroll data-scroll-class="scroll-rotate-1">e</p>
         <p data-scroll data-scroll-class="scroll-rotate-2">c</p>
@@ -174,7 +228,8 @@ import img from "../images/274.jpg";
             height={400}
             color="#a3c9a8"
             points="10"
-            id="4557159158955677573"
+            id="dsfjklsdfjsdklfjs"
+            exagerate={true}
           />
         </div>
         <p data-scroll data-scroll-speed="0.1">Prediction&nbsp;</p>
@@ -189,6 +244,48 @@ import img from "../images/274.jpg";
         </p>
       </div>
       <div style="margin-bottom: 6rem;">
+        <div data-scroll data-scroll-class="scroll-degen" class="post-degen">
+          <PostContainer doingBad={chart2.doingBad}>
+            <PostReply
+              readable
+              name="Sam Altman"
+              at="@gpt5"
+              ticker="+294,104,563"
+            >
+              <p>Will SBF drop the soap? 🧼</p>
+              <div class="card-media">
+                <div class="poll">
+                  <a>Hell yes!</a>
+                  <a>No way.</a>
+                </div>
+              </div>
+              <div class="reactions">
+                <Reaction>
+                  <Icon name="ph:heart-bold" />
+                </Reaction>
+                <Reaction>
+                  <Icon name="ph:repeat-bold" />
+                </Reaction>
+                <Reaction>
+                  <Icon name="ph:arrow-bend-down-left-bold" />
+                </Reaction>
+              </div>
+            </PostReply>
+            <Post
+              name="Sam Bankman-Fried"
+              at="@american_fraudster"
+              ticker="-32,513,456"
+              tickerBad={true}
+              chartValues={chart2.values}
+              chartColor={chart2.color}
+              chartId={chart2.id}
+              chartHeight={chartHeight}
+              chartPoints={chartPoints}
+            >
+              <p>You can't be serious rn 🖕</p>
+            </Post>
+          </PostContainer>
+        </div>
         <p class="bodytext">
           Built for the hyper degen in mind
           <span class="scrolltext" style="margin-left: -12px">
@@ -201,6 +298,46 @@ import img from "../images/274.jpg";
           </span>
           and normies alike.
         </p>
+        <div data-scroll data-scroll-class="scroll-normie" class="post-normie">
+          <PostContainer doingBad={chart3.doingBad}>
+            <Post
+              readable
+              name="AnimeFan92"
+              at="@delicious"
+              ticker="+24,952"
+              tickerBad={false}
+              chartValues={chart3.values}
+              chartColor={chart3.color}
+              chartId={chart3.id}
+              chartHeight={chartHeight}
+              chartPoints={chartPoints}
+            >
+              <p>Is Falin gonna get saved in Dungeon Meshi?!</p>
+              <div class="card-media">
+                <div class="poll">
+                  <a>I believe</a>
+                  <a>Not happening :(</a>
+                </div>
+              </div>
+              <div class="card-media">
+                <div class="media" style="position: relative;height: 250px; background-position: top">
+                  <img src="/public/dungeonmeshi.avif">
+                </div>
+              </div>
+              <div class="reactions" style="margin-top: 6rem">
+                <Reaction>
+                  <Icon name="ph:heart-bold" />
+                </Reaction>
+                <Reaction>
+                  <Icon name="ph:repeat-bold" />
+                </Reaction>
+                <Reaction>
+                  <Icon name="ph:arrow-bend-down-left-bold" />
+                </Reaction>
+              </div>
+            </Post>
+          </PostContainer>
+        </div>
       </div>
     </div>
 
@@ -236,6 +373,10 @@ body
 h1, h2
     color #fff
     text-align left
+
+.cover
+  position fixed
+  height 600%
 
 .header
     color #fff
@@ -374,6 +515,29 @@ main
   transform rotate(18deg)
   transition all 1s ease-in-out
 
+.post-degen
+  transform rotate(-20deg) translate(-700px, -500px)
+
+.scroll-degen
+  transform rotate(7deg) translate(20px, 20px)
+  transition all 1.5s cubic-bezier(0.85, 0.5, 0.15, 1);
+
+.post-normie
+  transform rotate(20deg) translate(80%, -500px)
+
+.scroll-normie
+  transform rotate(-7deg) translate(50%, 20px)
+  transition all 1.5s cubic-bezier(0.85, 0.5, 0.15, 1);
+
+@media (max-width 600px)
+  .post-normie
+    transform rotate(20deg) translate(1200px, -500px)
+    transition all 1.5s cubic-bezier(0.85, 0.5, 0.15, 1);
+  .scroll-normie
+    transform rotate(-7deg) translate(200px, 20px)
+    transition all 1.5s cubic-bezier(0.85, 0.5, 0.15, 1);
+
+
 .scrollprompt
   font-size 4rem
   z-index: 999;
@@ -433,7 +597,7 @@ main
     100%
         transform translateY(0px)
 
-p
+.decentralized
   font-size 10vw  
 
 .bodytext

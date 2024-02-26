@@ -6,6 +6,7 @@ import "../styles/global.styl";
 
 import "@fontsource/atkinson-hyperlegible/400.css";
 import "@fontsource/atkinson-hyperlegible/700.css";
+import "@fontsource/flow-circular";
 
 interface Props {
   title: string;
@@ -14,36 +15,43 @@ interface Props {
 }
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Join and Discover Collective Insight — coming soon.">
-    <link rel="icon" href="/inertialogo_min.svg">
-    <meta name="generator" content={Astro.generator}>
-    <meta name="theme-color" content="#538D5B">
-    <meta name="og:title" content={Astro.props.title}>
-    <meta name="og:type" content="website">
-    <meta name="og:url" content={Astro.url}>
-    <meta name="twitter:card" content="summary_large_image">
+      content="Join and Discover Collective Insight — coming soon."
+    />
+    <link rel="icon" href="/inertialogo_min.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#538D5B" />
+    <meta name="og:title" content={Astro.props.title} />
+    <meta name="og:type" content="website" />
+    <meta name="og:url" content={Astro.url} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="og:description"
-      content="Bet on news, culture, and more — coming soon.">
+      content="Bet on news, culture, and more — coming soon."
+    />
     <!-- <meta name="og:image" content="/opengraph.webp"> -->
     <title>{Astro.props.title}</title>
     <!-- <ViewTransitions /> -->
 
     <!-- Google tag (gtag.js) -->
-    <script async type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-0NP8Z30692"></script>
+    <script
+      async
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-0NP8Z30692"></script>
     <script type="text/partytown" is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-0NP8Z30692');
+      gtag("config", "G-0NP8Z30692");
     </script>
 
     <!-- <script>
