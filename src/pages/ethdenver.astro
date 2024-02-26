@@ -16,7 +16,8 @@ import img from "../images/274.jpg";
         data-scroll-css-progress
         class="c-scroll_offset scrollprompt"
       >
-        <Icon name="ph:mouse-simple-bold" />
+        <Icon class="desktopgesture" name="ph:mouse-simple-bold" />
+        <Icon class="mobilegesture" name="ph:hand-pointing-bold" />
         <p class="scrolltext">
           <span>S</span>
           <span>c</span>
@@ -32,7 +33,7 @@ import img from "../images/274.jpg";
         </p>
       </div>
       <div class="c-scroll_section -full -centered header">
-        <div style="display:flex; font-size: 10vw;">
+        <div style="display:flex; font-size: 10vw;" class="hey">
           <p data-scroll data-scroll-speed="-.1">Hey</p>
           <p data-scroll data-scroll-speed="0" style="margin-left: 2rem">D</p>
           <p data-scroll data-scroll-speed=".05">e</p>
@@ -43,6 +44,7 @@ import img from "../images/274.jpg";
           <svg
             data-scroll
             data-scroll-speed=".3"
+            class="ethdenverlogo"
             style="width:10rem;margin-left: 2rem;"
             xml:space="preserve"
             xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +226,6 @@ import img from "../images/274.jpg";
 body
     background-color #0d0c07
     color: #fff
-    transition all 0.2s ease-in-out
 
 h1, h2
     color #fff
@@ -246,6 +247,18 @@ main
     flex-direction column
     align-items center
     justify-content center
+    @media (max-width 768px)
+      margin-left 2rem
+
+.desktopgesture
+  display unset
+  @media (max-width 768px)
+    display none
+
+.mobilegesture
+  display none
+  @media (max-width 768px)
+    display unset
 
 .neverseen
   background: radial-gradient(
@@ -268,12 +281,20 @@ main
     align-items center
     justify-content center
 
+@media (max-width 768px)
+  .ethdenverlogo
+    display none
+  .hey
+    > *
+      margin-top 10rem !important
+      font-size 15vw !important
+
 .scroll-scale
   font-size 18vh
   transition all 1s ease-out
 
   @media screen and (max-width: 768px)
-    font-size 11vh
+    font-size 8vh !important
 
 .scroll-rotate-1
   color #a3c9a8
@@ -407,13 +428,21 @@ main
 
 p
   font-size 10vw  
+
 .bodytext
   font-size 4vw
+
+  @media (max-width 768px)
+    font-size 10vw !important
+
 .graphContainer
   position absolute
   width 70rem
   margin-left 10%
   height 100%
+
+  @media (max-width 768px)
+    margin-left 0
   
 @keyframes pathAnimation
 	from
