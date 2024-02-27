@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div id="invertedCursor" transition:persist>
+<div id="invertedCursor">
   <Icon name="ph:hand-pointing-bold" class="cursorIcon" id="pointCursor" />
   <Icon name="ph:hand-fist-bold" class="cursorIcon" id="noCursor" />
   <Icon name="ph:cursor-text-bold" class="cursorIcon" id="textCursor" />
@@ -124,8 +124,7 @@ import { Icon } from "astro-icon/components";
       animateCursor(e, hoverScale);
     });
   };
-  document.addEventListener("astro:after-swap", loadCursor);
-  // document.addEventListener("DOMContentLoaded", loadCursor);
+  document.addEventListener("astro:page-load", loadCursor);
 </script>
 
 <style lang="stylus">

@@ -1,8 +1,18 @@
 ---
 import { Icon } from "astro-icon/components";
-const { showPreSeedInvestorForm } = Astro.props;
+const { showSeedInvestorForm } = Astro.props;
 ---
 
+<div class="thanksWrapper">
+  <div class="textBlock hidden" id="thankYou">
+    <span>
+      <b
+        ><Icon name="ph:confetti-bold" style="transform: translateY(2px)" /> Thanks
+        for your interest!</b
+      > We'll be in touch soon.
+    </span>
+  </div>
+</div>
 <form id="emailForm" data-astro-reload>
   <div class="inputs">
     <input
@@ -15,7 +25,7 @@ const { showPreSeedInvestorForm } = Astro.props;
     />
 
     {
-      showPreSeedInvestorForm && (
+      showSeedInvestorForm && (
         <div class="checkwrapper">
           <input
             class="check"
@@ -36,7 +46,7 @@ const { showPreSeedInvestorForm } = Astro.props;
   </div>
 </form>
 <div class="buttonHolder">
-  <button type="submit" id="submitButton" class="button">
+  <button type="submit" role="button" id="submitButton" class="button">
     <label for="emailInput">
       <span
         ><Icon
@@ -51,49 +61,66 @@ const { showPreSeedInvestorForm } = Astro.props;
 <script>
   import party from "party-js";
 
-  const emailForm = document.getElementById("emailForm") as HTMLFormElement;
-  const submitButton = document.getElementById("submitButton");
-  const hiddenText = document.getElementById("thankYou");
-  const logo = document.querySelector(".logo")! as HTMLElement;
-  const tagline = document.getElementById("tagline");
-  const buttonHolder = document.querySelector(".buttonHolder")! as HTMLElement;
-  const emailInput = document.getElementById("emailInput")! as HTMLInputElement;
-  const checkbox = document.getElementById("checkbox")! as HTMLInputElement;
+  function loadForm() {
+    console.log("loading form");
 
-  document.addEventListener("astro:page-load", () => {
+    const emailForm = document.getElementById("emailForm") as HTMLFormElement;
+    const submitButton = document.getElementById(
+      "submitButton"
+    ) as HTMLButtonElement;
+    const hiddenText = document.getElementById("thankYou") as HTMLElement;
+    const logo = document.querySelector(".logo")! as HTMLElement;
+    const tagline = document.getElementById("tagline");
+    const buttonHolder = document.querySelector(
+      ".buttonHolder"
+    )! as HTMLElement;
+    const emailInput = document.getElementById(
+      "emailInput"
+    )! as HTMLInputElement;
+    const checkbox = document.getElementById("checkbox")! as HTMLInputElement;
+    const thanksWrapper = document.querySelector(".thanksWrapper")! as HTMLElement;
+
     checkbox.addEventListener("change", (e) => {
       if (e.target?.checked) {
-        submitButton.innerHTML = submitButton.innerHTML.replace("Join our waitlist", "Join our investoors");
-      }
-      else {
-        submitButton.innerHTML = submitButton.innerHTML.replace("Join our investoors", "Join our waitlist");
+        submitButton.innerHTML = submitButton.innerHTML.replace(
+          "Join our waitlist",
+          "Join our investoors"
+        );
+      } else {
+        submitButton.innerHTML = submitButton.innerHTML.replace(
+          "Join our investoors",
+          "Join our waitlist"
+        );
       }
     });
-  
+
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
       emailInput.addEventListener("focus", () => {
-        tagline.style.marginTop = "0.5rem";
+        if (tagline) {
+          tagline.style.marginTop = "0.5rem";
+        }
         buttonHolder.style.marginTop = "1rem";
         logo.style.marginTop = "1rem";
       });
       emailInput.addEventListener("blur", () => {
-        tagline.style.marginTop = "2rem";
+        if (tagline) {
+          tagline.style.marginTop = "2rem";
+        }
         buttonHolder.style.marginTop = "2rem";
         logo.style.marginTop = "10rem";
       });
     }
-  
-    emailForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      const formData = new FormData(this);
-  
+
+    submitButton.addEventListener("click", () => {
+      const formData = new FormData(emailForm);
+      
       fetch(
         "https://docs.google.com/forms/u/0/d/e/1FAIpQLSebh92iCY-GZ28-UiC1iNaXJnMrvjbyXknmF_gkV1MTSqCW0A/formResponse",
         {
           method: "POST",
           body: formData,
           mode: "no-cors",
-        },
+        }
       )
         .then((response) => {
           emailForm.style.opacity = "0";
@@ -104,13 +131,16 @@ const { showPreSeedInvestorForm } = Astro.props;
           setTimeout(() => {
             emailForm.style.display = "none";
             submitButton.style.display = "none";
+            thanksWrapper.style.marginTop = "-10rem";
           }, 10);
         })
         .catch((error) => {
           console.error("Error submitting form", error);
         });
     });
-  });
+  }
+
+  document.addEventListener("astro:page-load", loadForm);
 </script>
 
 <style lang="stylus">
@@ -120,14 +150,17 @@ const { showPreSeedInvestorForm } = Astro.props;
     align-items center
     margin-top 2rem
 
-.check {
-  display: none;
-  &:checked + label .checkbox {
-    &:after {
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-}
+.check
+  display none
+  &:checked + label .checkbox
+    &:after
+      transform: translate(-50%, -50%) scale(1)
+    
+.thanksWrapper
+  display flex
+  justify-content center
+  align-items center
+  width 100%
 
 .checkwrapper
   text-align left

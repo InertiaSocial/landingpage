@@ -12,7 +12,8 @@ import img from "../images/274.jpg";
     <Logo />
     <div class="denverCtaWrapper">
       <a class="denverCta" href="/ethdenver"
-        >Here from ETHDenver? <svg
+        >Here from ETHDenver? 
+        <!-- <svg
           class="ethdenverlogo"
           style="width:9rem;transform: translateY(4rem);"
           xml:space="preserve"
@@ -37,7 +38,8 @@ import img from "../images/274.jpg";
               transition: stroke-width 0.3s;
             }
           </style>
-        </svg></a
+        </svg> -->
+        </a
       >
     </div>
     <div id="tagline" class="textBlock">
@@ -46,16 +48,8 @@ import img from "../images/274.jpg";
         coming soon.
       </span>
     </div>
-    <div class="textBlock hidden" id="thankYou">
-      <span>
-        <b
-          ><Icon name="ph:confetti-bold" style="transform: translateY(2px)" /> Thanks
-          for your interest!</b
-        > We'll be in touch soon.
-      </span>
-    </div>
     <div class="form">
-      <InterestForm showPreSeedInvestorForm />
+      <InterestForm showSeedInvestorForm />
     </div>
     <div class="cover">
       <Image draggable="false" alt="" src={img} quality="high" />
@@ -81,7 +75,10 @@ main
   // margin-top 3rem
 
   .denverCta
-    font-size 3rem
+    font-weight 700
+    text-decoration underline !important
+    text-decoration-style wavy !important
+    font-size 2rem
     color #f8f6f2
     text-decoration none
     text-align center
