@@ -29,12 +29,12 @@ const { showSeedInvestorForm } = Astro.props;
         <div class="checkwrapper">
           <input
             class="check"
-            id="checkbox"
+            id="checkboxInput"
             type="checkbox"
-            name="entry.1201544823_sentinel"
-            value="1"
+            name="entry.1201544823"
+            value="Investor"
           />
-          <label for="checkbox">
+          <label for="checkboxInput">
             <span class="checkbox"> </span>
           </label>
           <div class="checklabel">
@@ -59,88 +59,96 @@ const { showSeedInvestorForm } = Astro.props;
 </div>
 
 <script>
-  import party from "party-js";
+import party from "party-js";
 
-  function loadForm() {
-    console.log("loading form");
+function loadForm() {
+  console.log("loading form");
 
-    const emailForm = document.getElementById("emailForm") as HTMLFormElement;
-    const submitButton = document.getElementById(
-      "submitButton"
-    ) as HTMLButtonElement;
-    const hiddenText = document.getElementById("thankYou") as HTMLElement;
-    const logo = document.querySelector(".logo")! as HTMLElement;
-    const tagline = document.getElementById("tagline");
-    const buttonHolder = document.querySelector(
-      ".buttonHolder"
-    )! as HTMLElement;
-    const emailInput = document.getElementById(
-      "emailInput"
-    )! as HTMLInputElement;
-    const checkbox = document.getElementById("checkbox")! as HTMLInputElement;
-    const thanksWrapper = document.querySelector(".thanksWrapper")! as HTMLElement;
+  const emailForm = document.getElementById("emailForm") as HTMLFormElement;
+  const submitButton = document.getElementById(
+    "submitButton",
+  ) as HTMLButtonElement;
+  const hiddenText = document.getElementById("thankYou") as HTMLElement;
+  const logo = document.querySelector(".logo") as HTMLElement;
+  const tagline = document.getElementById("tagline");
+  const buttonHolder = document.querySelector(".buttonHolder") as HTMLElement;
+  const emailInput = document.getElementById(
+    "emailInput",
+  ) as HTMLInputElement;
+  const checkbox = document.getElementById(
+    "checkboxInput",
+  ) as HTMLInputElement;
+  const thanksWrapper = document.querySelector(
+    ".thanksWrapper",
+  ) as HTMLElement;
 
-    checkbox.addEventListener("change", (e) => {
-      if (e.target?.checked) {
-        submitButton.innerHTML = submitButton.innerHTML.replace(
-          "Join our waitlist",
-          "Join our investoors"
-        );
-      } else {
-        submitButton.innerHTML = submitButton.innerHTML.replace(
-          "Join our investoors",
-          "Join our waitlist"
-        );
-      }
-    });
-
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
-      emailInput.addEventListener("focus", () => {
-        if (tagline) {
-          tagline.style.marginTop = "0.5rem";
-        }
-        buttonHolder.style.marginTop = "1rem";
-        logo.style.marginTop = "1rem";
-      });
-      emailInput.addEventListener("blur", () => {
-        if (tagline) {
-          tagline.style.marginTop = "2rem";
-        }
-        buttonHolder.style.marginTop = "2rem";
-        logo.style.marginTop = "10rem";
-      });
+  checkbox.addEventListener("change", (e) => {
+    if (e.target?.checked) {
+      submitButton.innerHTML = submitButton.innerHTML.replace(
+        "Join our waitlist",
+        "Join our investoors",
+      );
+    } else {
+      submitButton.innerHTML = submitButton.innerHTML.replace(
+        "Join our investoors",
+        "Join our waitlist",
+      );
     }
+  });
 
-    submitButton.addEventListener("click", () => {
-      const formData = new FormData(emailForm);
-      
-      fetch(
-        "https://docs.google.com/forms/u/0/d/e/1FAIpQLSebh92iCY-GZ28-UiC1iNaXJnMrvjbyXknmF_gkV1MTSqCW0A/formResponse",
-        {
-          method: "POST",
-          body: formData,
-          mode: "no-cors",
-        }
-      )
-        .then((response) => {
-          emailForm.style.opacity = "0";
-          hiddenText.classList.add("show");
-          party.confetti(submitButton, {
-            count: party.variation.range(20, 40),
-          });
-          setTimeout(() => {
-            emailForm.style.display = "none";
-            submitButton.style.display = "none";
-            thanksWrapper.style.marginTop = "-10rem";
-          }, 10);
-        })
-        .catch((error) => {
-          console.error("Error submitting form", error);
-        });
+  if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+    emailInput.addEventListener("focus", () => {
+      if (tagline) {
+        tagline.style.marginTop = "0.5rem";
+      }
+      buttonHolder.style.marginTop = "1rem";
+      logo.style.marginTop = "1rem";
+    });
+    emailInput.addEventListener("blur", () => {
+      if (tagline) {
+        tagline.style.marginTop = "2rem";
+      }
+      buttonHolder.style.marginTop = "2rem";
+      logo.style.marginTop = "10rem";
     });
   }
 
-  document.addEventListener("astro:page-load", loadForm);
+  submitButton.addEventListener("mouseover", () => {
+    const formData = new FormData(emailForm);
+    console.log(formData);
+  });
+
+  submitButton.addEventListener("click", () => {
+    const formData = new FormData(emailForm);
+    console.log(formData);
+
+    fetch(
+      "https://docs.google.com/forms/u/0/d/e/1FAIpQLSebh92iCY-GZ28-UiC1iNaXJnMrvjbyXknmF_gkV1MTSqCW0A/formResponse",
+      {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      },
+    )
+      .then((response) => {
+        emailForm.style.opacity = "0";
+        hiddenText.classList.add("show");
+        party.confetti(submitButton, {
+          count: party.variation.range(20, 40),
+        });
+        setTimeout(() => {
+          emailForm.style.display = "none";
+          submitButton.style.display = "none";
+          thanksWrapper.style.marginTop = "-10rem";
+        }, 10);
+      })
+      .catch((error) => {
+        console.error("Error submitting form", error);
+      });
+  });
+}
+
+document.addEventListener("astro:page-load", loadForm);
 </script>
 
 <style lang="stylus">
