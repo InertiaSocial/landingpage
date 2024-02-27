@@ -9,6 +9,7 @@ import Post from "../components/skeletons/Post.astro";
 import PostContainer from "../components/skeletons/PostContainer.astro";
 import PostReply from "../components/skeletons/PostReply.astro";
 import Reaction from "../components/skeletons/Reaction.astro";
+import XIcon from "../components/XIcon.astro";
 import img from "../images/274.jpg";
 import Layout from "../layouts/Layout.astro";
 
@@ -293,12 +294,12 @@ calculateValues(chart4);
         </div>
         <p class="bodytext">
           Built for the hyper degen in mind
-          <span class="scrolltext" style="margin-left: -12px">
+          <span class="scrolltext" style="margin-left: -2px">
             <span>.</span><span>.</span><span>.</span>
           </span>
         </p>
         <p class="bodytext andnormies" style="text-align: right;">
-          <span class="scrolltext" style="margin-right: -12px">
+          <span class="scrolltext" style="margin-right: -2px">
             <span>.</span><span>.</span><span>.</span>
           </span>
           and normies alike.
@@ -365,6 +366,7 @@ calculateValues(chart4);
           <Logo />
         </div>
         <InterestForm showSeedInvestorForm />
+        <XIcon />
       </div>
     </div>
     <div class="cover">
@@ -737,7 +739,6 @@ main
   @media (max-width 768px)
     transform translate(0px, -100px) !important
     width 100%
-    // display none
 
 .andnormies
   @media (max-width 768px)
