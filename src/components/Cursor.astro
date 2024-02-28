@@ -11,6 +11,16 @@ import { Icon } from "astro-icon/components";
 
 <script>
   const loadCursor = () => {
+    function isWebkitOnLinux() {
+      const userAgent = navigator.userAgent;
+      const isWebkit = /WebKit/.test(userAgent);
+      const isLinux = /Linux|X11|CrOS/.test(userAgent); 
+      return isWebkit && isLinux;
+    }
+
+    if (isWebkitOnLinux()) {
+      return;
+    }
     const invertedCursor = document.getElementById("invertedCursor")!;
     const pointCursor = document.getElementById("pointCursor")!;
     const noCursor = document.getElementById("noCursor")!;
