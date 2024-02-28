@@ -62,8 +62,6 @@ const { showSeedInvestorForm } = Astro.props;
 import party from "party-js";
 
 function loadForm() {
-  console.log("loading form");
-
   const emailForm = document.getElementById("emailForm") as HTMLFormElement;
   const submitButton = document.getElementById(
     "submitButton",
@@ -113,14 +111,12 @@ function loadForm() {
     });
   }
 
-  submitButton.addEventListener("mouseover", () => {
-    const formData = new FormData(emailForm);
-    console.log(formData);
-  });
-
   submitButton.addEventListener("click", () => {
     const formData = new FormData(emailForm);
-    console.log(formData);
+    const submittedEmail = formData.get("entry.1223453695")
+    if (!submittedEmail || submittedEmail.toString().length < 4) {
+      return; 
+    }
 
     fetch(
       "https://docs.google.com/forms/u/0/d/e/1FAIpQLSebh92iCY-GZ28-UiC1iNaXJnMrvjbyXknmF_gkV1MTSqCW0A/formResponse",
